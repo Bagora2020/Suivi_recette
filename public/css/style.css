@@ -1,0 +1,9 @@
+.form-control{
+    /* background-color: rgb(247, 238, 238); */
+    border-radius: 9px;
+    width: 130px;
+    border-color: red;
+}
+.date-input:hover{
+    border-color: red;
+}
