@@ -14,7 +14,6 @@ class SallecafetariaController extends Controller
         foreach($sallecafetaria as $salcaf) {
             $total_recette_sallecafetaria += $salcaf->montant;
         }
-
         return view('location.sallecafetaria.index', compact('sallecafetaria', 'total_recette_sallecafetaria'));
     }
 

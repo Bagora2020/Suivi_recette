@@ -5,7 +5,7 @@
 <div class="mx-auto container p-3">
     <div class="card">
         <div class="card-header d-flex align-content-center justify-content-between">
-            <h1 class="h2">Nouvelle recette</h1>
+            <h1 class="h2">Enregistrement Recette Salle Cafétaria</h1>
             <button class="float-end btn btn-danger">
                 <i class="bi bi-arrow-90deg-left"></i>
                 Retour
@@ -17,10 +17,12 @@
                 @csrf
                 <div class="row mb-3">
                     <div class="col-12 col-md-6">
+                        <label for="">Nature de la Recette</label>
                         <input type="text" class="form-control rounded-3" placeholder="objet recette" name="nomlocataire">
                     </div>
                     <div class="col-12 col-md-6">
                         <select name="statut" class="form-select">
+                            <label for="">Statut</label>
                             <option value="Etudiant">Etudiant</option>
                             <option value="Particulier">Particulier</option>
                         </select>
@@ -28,6 +30,7 @@
                 </div>
                 <div class="row mb-3">
                     <div class="col-12 col-md-6">
+                        <label for="">Nature de l'activité</label>
                         <select name="natureActivite" class="form-select">
                             <option value="Lucrative">Lucrative</option>
                             <option value="Non-Lucrative">Non-Lucrative</option>
@@ -35,15 +38,18 @@
                     </div>
 
                     <div class="col-12 col-md-6">
+                        <label for="">Motif</label>
                         <input type="text" name="motif" class="form-control" placeholder="motif">
                     </div>
                 </div>
 
                 <div class="row mb-3">
                     <div class="col-12 col-md-6">
+                        <label for="">début Activité</label>
                         <input type="time" name="debutAct" class="form-control" placeholder="Début D'activité">
                     </div>
                     <div class="col-12 col-md-6">
+                        <label for="">Fin Activité</label>
                         <input type="time" name="finAct" class="form-control" placeholder="Fin D'activité ">
                     </div>
                 </div>

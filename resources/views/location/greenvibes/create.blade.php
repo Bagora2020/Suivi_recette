@@ -5,7 +5,7 @@
 <div class="mx-auto container p-3">
     <div class="card">
         <div class="card-header d-flex align-content-center justify-content-between">
-            <h1 class="h2">Nouvelle recette</h1>
+            <h1 class="h2">Enregistrement Recette Greenvibes</h1>
             <button class="float-end btn btn-danger">
                 <i class="bi bi-arrow-90deg-left"></i>
                 Retour
@@ -17,9 +17,11 @@
                 @csrf
                 <div class="row mb-3">
                     <div class="col-12 col-md-6">
+                        <label for="">Nature de la recette</label>
                         <input type="text" class="form-control rounded-3" placeholder="objet recette" name="objetrecette">
                     </div>
                     <div class="col-12 col-md-6">
+                    <label for="">Mois</label>
                         <select name="mois" class="form-select">
                             <option value="Janvier">Janvier</option>
                             <option value="Février">Février</option>
@@ -38,9 +40,11 @@
                 </div>
                 <div class="row mb-3">
                     <div class="col-12 col-md-6">
+                        <label for="">Montant</label>
                         <input type="number" name="montant" class="form-control" placeholder="montant">
                     </div>
                     <div class="col-12 col-md-6">
+                        <label for="">Date Paiement</label>
                         <input type="Date" name="datepaiement" class="form-control" placeholder="Date">
                     </div>
                 </div>

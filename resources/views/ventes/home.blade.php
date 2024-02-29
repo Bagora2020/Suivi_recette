@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+<link rel="stylesheet" href="{{asset('css/style.css')}}">
 
 <div class="mx-auto container p-3">
     <div class="card p-3">
@@ -14,7 +15,7 @@
                     <script>
                         var currentYear = new Date().getFullYear();
                         var selectOptions = '';
-                        for (var year = currentYear; year >= 1900; year--) {
+                        for (var year = currentYear; year >= 2021; year--) {
                             selectOptions += '<option value="' + year + '">' + year + '</option>';
                         }
                         document.write(selectOptions);
@@ -46,12 +47,12 @@
                                     <div class="text-xs font-weight-bold text-uppercase mb-1">Recette Consultation</div>
                                     <div class="h5 mb-0 font-weight-bold text-gray-800">{{$total_recette_consultation}} FCFA</div>
                                     <div class="mt-2 mb-0 text-muted text-xs">
-                                        <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
+                                        <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> </span>
                                         <span>Recette Consultation</span>
                                     </div>
                                 </div>
                                 <div class="col-auto">
-                                    <i class="fas fa-calendar fa-2x text-primary"></i>
+                                <i class="fa-solid fa-stethoscope text-primary fs-3"></i>
                                 </div>
                             </div>
                         </div>
@@ -66,12 +67,12 @@
                                     <div class="text-xs font-weight-bold text-uppercase mb-1">Recette Salle Musculation</div>
                                     <div class="h5 mb-0 font-weight-bold text-gray-800">{{$total_recette_musculation}} FCFA</div>
                                     <div class="mt-2 mb-0 text-muted text-xs">
-                                        <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 12%</span>
+                                        <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> </span>
                                         <span>Recette Salle Musculation</span>
                                     </div>
                                 </div>
                                 <div class="col-auto">
-                                    <i class="fas fa-shopping-cart fa-2x text-success"></i>
+                                <i class="fa-solid fa-dumbbell text-primary fs-3"></i>
                                 </div>
                             </div>
                         </div>
@@ -86,12 +87,12 @@
                                     <div class="text-xs font-weight-bold text-uppercase mb-1">Recette Médicament</div>
                                     <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"> {{$total_recette_medicament}} FCFA</div>
                                     <div class="mt-2 mb-0 text-muted text-xs">
-                                        <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 20.4%</span>
+                                        <span class="text-success mr-2"><i class="fas fa-arrow-up"></i></span>
                                         <span>Recette Médicament</span>
                                     </div>
                                 </div>
                                 <div class="col-auto">
-                                    <i class="fas fa-users fa-2x text-info"></i>
+                                <i class="fa-solid fa-tablets text-primary fs-3"></i>
                                 </div>
                             </div>
                         </div>
@@ -111,7 +112,7 @@
                                     </div>
                                 </div>
                                 <div class="col-auto">
-                                    <i class="fas fa-comments fa-2x text-warning"></i>
+                                <i class="fa-solid fa-utensils text-primary fs-3"></i>
                                 </div>
                             </div>
                         </div>
@@ -119,6 +120,25 @@
                 </div>
 
 
+                <div class="col-xl-3 col-md-6 mb-4">
+                    <div class="card h-100 px-3">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-uppercase mb-1">Total recettes Pains</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{$total_recette_Pain}} FCFA</div>
+                                    <div class="mt-2 mb-0 text-muted text-xs">
+                                        <span class="text-danger mr-2"><i class="fas fa-arrow-down"></i> </span>
+                                        <span>Total recettes Pain</span>
+                                    </div>
+                                </div>
+                                <div class="col-auto">
+                                <i class="fa-solid fa-utensils text-primary fs-3"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
 
                 <div class="col-xl-3 col-md-6 mb-4">
@@ -134,7 +154,7 @@
                                     </div>
                                 </div>
                                 <div class="col-auto">
-                                    <i class="fas fa-comments fa-2x text-warning"></i>
+                                <i class="fa-solid fa-money-check-dollar text-primary fs-3"></i>
                                 </div>
                             </div>
                         </div>
@@ -194,6 +214,7 @@
             ['Ticket Musculatioon', jsonData[1]],
             ['Vente de Médicament', jsonData[2]],
             ['Vente Ticket de Restauration', jsonData[3]],
+            ['Vente Ticket de Pains', jsonData[4]],
 
         ]);
 

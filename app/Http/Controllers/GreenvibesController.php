@@ -25,7 +25,7 @@ class GreenvibesController extends Controller
 
     public function store(Request $request){
 
-        $greenvibes = $request->all();
+        $grenVibes = $request->all();
 
         $grenVibes = New Greenvibes();
         $grenVibes->create([

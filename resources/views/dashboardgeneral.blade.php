@@ -11,21 +11,16 @@
       <form action="{{route('dashboardgeneral')}}" method="get" class="d-flex gap-2 ">
         @csrf
 
+
         <select id="yearSelect" onchange="afficherAnnee()" name="date" class="form-control">
-        // je recuperer la liste dans la session de l appli avec la cle l ors de l enregistrement
-              <script>
-                // const o = sessionStorage.getItem('shjsgusjgs');
-                // const ob = JSON.parse(o)
-                // ob.forEach(ep => {
-                //   '<option value="' + ep.id + '">' + ep.nom + '</option>'
-                // })
-                  var currentYear = new Date().getFullYear();
-                  var selectOptions = '';
-                  for (var year = currentYear; year >= 2021; year--) {
-                        selectOptions += '<option value="' + year + '">' + year + '</option>';
-                  }
-                  document.write(selectOptions);  
-              </script>
+          <script>
+            var currentYear = new Date().getFullYear();
+            var selectOptions = '';
+            for (var year = currentYear; year >= 2022; year--) {
+              selectOptions += '<option value="' + year + '">' + year + '</option>';
+            }
+            document.write(selectOptions);
+          </script>
         </select>
 
         <button type="submit" value="" class="btn btn-primary">
@@ -33,7 +28,9 @@
         </button>
 
       </form>
+
       
+
 
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="./">Home</a></li>
@@ -56,7 +53,7 @@
                   </div>
                 </div>
                 <div class="col-auto">
-                  <i class="fas fa-calendar fa-2x text-primary"></i>
+                <i class="fa-solid fa-money-check-dollar text-primary fs-3"></i>
                 </div>
               </div>
             </div>
@@ -72,12 +69,12 @@
                   <div class="text-xs font-weight-bold text-uppercase mb-1">Recette Ventes</div>
                   <div class="h5 mb-0 font-weight-bold text-gray-800">{{$recette_vente}} FCFA</div>
                   <div class="mt-2 mb-0 text-muted text-xs">
-                    <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 12%</span>
+                    <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> </span>
                     <span>recette Ventes</span>
                   </div>
                 </div>
                 <div class="col-auto">
-                  <i class="fas fa-shopping-cart fa-2x text-success"></i>
+                <i class="fa-solid fa-money-check-dollar text-primary fs-3"></i>
                 </div>
               </div>
             </div>
@@ -93,12 +90,12 @@
                   <div class="text-xs font-weight-bold text-uppercase mb-1">Recette Totale</div>
                   <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{$recette_total}} FCFA </div>
                   <div class="mt-2 mb-0 text-muted text-xs">
-                    <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 20.4%</span>
+                    <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> </span>
                     <span>Recette totale</span>
                   </div>
                 </div>
                 <div class="col-auto">
-                  <i class="fas fa-users fa-2x text-info"></i>
+                  <i class="fa-solid fa-money-check-dollar text-primary fs-3"></i>
                 </div>
               </div>
             </div>

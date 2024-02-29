@@ -2,30 +2,65 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\OrdreRecette;
+use App\Models\Medicament;
 use Illuminate\Http\Request;
 
 class MedicamentController extends Controller
 {
-    /*
-    *Cette function nous permet de récuperer les ventes liés uniquement aux médicaments
-    */
-    public function index()
-    {
+    public function index(){
+        $medicament = Medicament::paginate(12);
 
-        $recette_medicaments = OrdreRecette::where('type', '=', 'medicament');
-        $recette_medicaments= OrdreRecette::Paginate(12);
-        $total_recette_medicaments = 0;
-        foreach ($recette_medicaments as $medicament) {
-            $total_recette_medicaments += $medicament->montant;
+        $total_recette_medicament = 0;
+        foreach($medicament as $medicaments) {
+            $total_recette_medicament += $medicaments->montant;
         }
 
-        return view('ventes.medicament.index', compact('recette_medicaments', 'total_recette_medicaments'));
+        return view('ventes.medicament.index', compact('medicament', 'total_recette_medicament'));
     }
 
-    public function __construct()
-{
-    $this->middleware('auth');
-}
+    public function create(){
+        return view('ventes.medicament.create');
+    }
+
+    public function store(Request $request)
+    {
+        $data = $request->all();
+
+        $data = new Medicament();
+        $data->create([
+
+            'objetRecette'=> $request->objetRecette,
+            'quantite' => $request->quantite,
+            'pu' => $request->pu,
+            'montant' => $request->quantite *  $request->pu,
+            'date' => $request->date,
+            'nomAgent' => $request->nomAgent,
+
+            
+        ]);
+
+        return redirect()->route('medicament.index')->with('success', "L'ordre de recette a été ajouté avec Succés");
+    }
+
+    public function edit($id)
+    {
+        $medicament = Medicament::findOrFail($id);
+        return view('ventes.medicament.edit', compact('medicament'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $medicament = Medicament::findOrFail($id);
+        $medicament->update($request->all());
+        return redirect()->route('medicament.index')->with('success', 'Article updated successfully');
+    }
+
+    public function destroy($id)
+    {
+        $medicament = Medicament::findOrFail($id);
+        $medicament->delete();
+        return redirect()->route('medicament.index')->with('success', 'Article updated successfully');
+    }
+    
 
 }

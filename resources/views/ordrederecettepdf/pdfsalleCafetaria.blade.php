@@ -234,7 +234,7 @@
      <div class="contain">
           <h1>ORDRE DE RECETTES N°00{{$invoice1->id}} </h1>
           <p class="text-ordre-recette">
-               Le chef du Service de recouvrement du CROUS/Z est invité à recevoir de <br> Monsieur Mamadou KONTE la somme de quatre mille<br>
+               Le chef du Service de recouvrement du CROUS/Z est invité à recevoir de <br>.................................................la somme de .................................................<br>
                ({{$invoice1->montant}} CFA)
           </p>
           
@@ -251,7 +251,7 @@
                     <tr>
                          <td class="motif">
                               <span>En espèce le {{$invoice1->date}}</span> <br>
-                              <p>Paiement {{$invoice1->type}} <br> Quitance N°00{{$invoice1->id}}</p>
+                              <p>Paiement Salle Foyer Alpha SANE <br> Quitance N°00{{$invoice1->id}}</p>
                          </td>
                          <td class="td-montant border-visible">
                          {{$invoice1->montant}}
@@ -276,7 +276,7 @@
                </div>
           </div>
           <div class="text-sub-tab">
-               Cette somme sera portée dans les écritures du Chef du Service du Budget au compte 707315 : Location Salle foyer
+               Cette somme sera portée dans les écritures du Chef du Service du Budget au compte 707315 : Location Salle Foyer Alpha SANE
           </div>
      </div>
      <footer class="footer">

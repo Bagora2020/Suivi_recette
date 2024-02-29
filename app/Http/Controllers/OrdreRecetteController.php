@@ -2,7 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Consultation;
+use App\Models\Medicament;
+use App\Models\Musculation;
 use App\Models\OrdreRecette;
+use App\Models\Pain;
+use App\Models\Petitdej;
+use App\Models\Ticketdej;
 use Illuminate\Http\Request;
 use PhpParser\Node\Stmt\Return_;
 use DateTime;
@@ -27,109 +33,30 @@ class OrdreRecetteController extends Controller
         $total_recette_medicament = $this->totalMedicament($date);
         $total_recette_petitdejj = $this->total_petit_dej($date);
         $total_recette_ticketdej = $this->total_dej($date);
+        $total_recette_Pain = $this->total_Pain($date);
 
         $total_restauration = $this->total_petit_dej($date) + $this->total_dej($date);
 
 
-        $recette_total = $this->totalConsultation($date) + $this->totalMusculation($date) + $this->totalMedicament($date) + $this->total_petit_dej($date) + $this->total_dej($date);
-        $res = [$total_recette_consultation, $total_recette_musculation, $total_recette_medicament, $total_restauration];
-        return view('ventes.home', compact('total_recette_consultation', 'total_recette_musculation', 'total_recette_medicament', 'total_restauration', 'recette_total', 'res'));
+        $recette_total = $this->totalConsultation($date) + $this->totalMusculation($date) + $this->totalMedicament($date) + $this->total_petit_dej($date) + $this->total_dej($date) +$this->total_Pain($date);
+        $res = [$total_recette_consultation, $total_recette_musculation, $total_recette_medicament, $total_restauration, $total_recette_Pain];
+        return view('ventes.home', compact('total_recette_consultation', 'total_recette_musculation', 'total_recette_medicament', 'total_restauration','total_recette_Pain', 'recette_total', 'res'));
     }
 
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-
-        $ordreRecette = OrdreRecette::all();
-
-
-        return view('ventes.create', compact('ordreRecette'));
-    }
-
+ 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
-        $data = $request->all();
-
-        $data = new OrdreRecette();
-        $data->create([
-            'objetRecette' => $request->objetRecette,
-            'quantite' => $request->quantite,
-            'pu' => $request->pu,
-            'montant' => $request->quantite * $request->pu,
-            'date' => $request->date,
-
-            'type' => $request->type
-        ]);
-
-        return redirect()->route('ordreRecette.create')->with('success', "L'ordre de recette a été ajouté avec Succés");
-    }
-
-
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(OrdreRecette $ordreRecette)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit($id)
-    {
-
-
-        $ordreRecette = OrdreRecette::findOrFail($id);
-        return view('ventes.edit', compact('ordreRecette'));
-    }
-
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, $id)
-    {
-        $ordreRecette = OrdreRecette::findOrFail($id);
-
-             $ordreRecette->update([
-            'objetRecette' => $request->objetRecette,
-            'quantite' => $request->quantite,
-            'pu' => $request->pu,
-            'montant' => $request->quantite * $request->pu,
-            
-
-            'type' => $request->type
-        ]);
-
-        return redirect()->route('ordreRecette.create')->with('success', "l'ordre de recette a été modifié avec succès");
-    }
-
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy($id)
-    {
-        $ordreRecette = OrdreRecette::findOrFail($id);
-        $ordreRecette->delete();
-        return redirect()->back()->with('success', "l'ordre de recette a été supprimer avec succès");
-    }
-
+  
     //totales des recettes*****
 
     private function totalConsultation($date)
     {
-        $recette_consultations = OrdreRecette::where('type', '=', 'consultation')
-            ->whereYear('date', $date)
-            ->get();
+        $recette_consultations = Consultation::whereYear('date', $date)->get();
         $total_recette_consultation = 0;
         foreach ($recette_consultations as $recette_consultation) {
             $total_recette_consultation += $recette_consultation->montant;
@@ -140,9 +67,7 @@ class OrdreRecetteController extends Controller
 
     private function totalMusculation($date)
     {
-        $recette_musculations = OrdreRecette::where('type', '=', 'musculation')
-                                                    ->whereYear('date', $date)
-                                                    ->get();
+        $recette_musculations = Musculation::whereYear('date', $date)->get();
 
         $total_recette_musculation = 0;
 
@@ -156,9 +81,7 @@ class OrdreRecetteController extends Controller
 
     private function totalMedicament($date)
     {
-        $recette_medicaments = OrdreRecette::where('type', '=', 'medicament')
-                                                    ->whereYear('date', $date)
-                                                    ->get();
+        $recette_medicaments = Medicament::whereYear('date', $date)->get();
 
         $total_recette_medicament = 0;
 
@@ -172,9 +95,7 @@ class OrdreRecetteController extends Controller
 
     private function total_petit_dej($date)
     {
-        $recette_petitdej = OrdreRecette::where('type', '=', 'petitdej')
-                                            ->whereYear('date', $date)
-                                            ->get();
+        $recette_petitdej = Petitdej::whereYear('date', $date)->get();
         $total_recette_petitdejj = 0;
         foreach ($recette_petitdej  as $recette_petitdejj) {
             $total_recette_petitdejj += $recette_petitdejj->montant;
@@ -184,9 +105,7 @@ class OrdreRecetteController extends Controller
 
     private function total_dej($date)
     {
-        $recette_ticketdej = OrdreRecette::where('type', '=', 'ticketdej')
-                                                    ->whereYear('date', $date)
-                                                    ->get();
+        $recette_ticketdej = Ticketdej::whereYear('date', $date)->get();
 
 
         $total_recette_ticketdej = 0;
@@ -194,5 +113,17 @@ class OrdreRecetteController extends Controller
             $total_recette_ticketdej += $recette_ticketdejj->montant;
         }
         return $total_recette_ticketdej;
+    }
+
+    private function total_pain($date)
+    {
+        $recette_Pain = Pain::whereYear('date', $date)->get();
+
+
+        $total_recette_Pain = 0;
+        foreach ($recette_Pain  as $recette_Pain) {
+            $total_recette_Pain += $recette_Pain->montant;
+        }
+        return $total_recette_Pain;
     }
 }

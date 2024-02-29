@@ -234,7 +234,7 @@
      <div class="contain">
           <h1>ORDRE DE RECETTES N°00{{$invoice->id}} </h1>
           <p class="text-ordre-recette">
-               Le chef du Service de recouvrement du CROUS/Z est invité à recevoir de <br> Monsieur Mamadou KONTE la somme de {{$total_lettre}} <br>
+               Le chef du Service de recouvrement du CROUS/Z est invité à recevoir de <br> M/mme ........................................ la somme de ....................................... <br>
                ({{$invoice->montant}} CFA)
           </p>
           
@@ -276,7 +276,7 @@
                </div>
           </div>
           <div class="text-sub-tab">
-               Cette somme sera portée dans les écritures du Chef du Service du Budget au compte 707315 : Location Salle foyer
+               Cette somme sera portée dans les écritures du Chef du Service du Budget au compte 707315 : Ticket de {{$invoice->type}}
           </div>
      </div>
      <footer class="footer">

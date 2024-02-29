@@ -12,7 +12,7 @@
         </div>
 
         <div class="card-body">
-            <a href="{{route('ordreRecette.create')}}" class="btn btn-success">
+            <a href="{{route('consultation.create')}}" class="btn btn-success">
                 Nouvel ordre de recette
                 <i class="bi bi-folder-plus"></i>
             </a>
@@ -21,29 +21,30 @@
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Objet recette</th>
-                     
+                        <th scope="col">Objet recette</th> 
                         <th scope="col">Quantité</th>
                         <th scope="col">Prix Unitaire</th>
                         <th scope="col">Montant</th>
-                        <th scope="col">Période</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Nom Agent</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($recette_consultation as $data1)
+                @foreach($consultation as $consultations)
                     <tr>
-                        <th scope="row">{{$data1->id }}</th>
-                        <td>{{$data1->objetRecette }}</td>
+                        <th scope="row">{{$consultations->id }}</th>
+                        <td>Ticket Consultation</td>
                        
-                        <td>{{$data1->quantite }}</td>
-                        <td>{{$data1->pu }}</td>
-                        <td>{{$data1->montant}}</td>
-                        <td>{{$data1->date}} </td>
+                        <td>{{$consultations->quantite }}</td>
+                        <td>50</td>
+                        <td>{{$consultations->montant }}</td>
+                        <td>{{$consultations->date }} </td>
+                        <td>{{$consultations->nomAgent }} </td>
                         <td class="d-flex flex-row justify-content-between">
-                            <a href="{{ route ('ordreRecette.edit', $data1->id) }}" class="bg-warning badge "><i class="bi bi-pencil-fill"></i></a>
+                            <a href="{{route('consultation.edit', $consultations->id)}}" class="bg-warning badge "><i class="bi bi-pencil-fill"></i></a>
 
-                            <form method="POST" action="{{ route('ordreRecette.destroy', $data1->id) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cet élément?');">
+                            <form method="POST" action="{{ route('consultation.destroy', $consultations->id) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cet élément?');">
                                 @csrf
                                 @method('DELETE')
 
@@ -53,14 +54,13 @@
                             </form>
 
 
-                            <a href="{{route ('ordrederecettepdf.index', $data1->id)}}" class="bg-info badge" target="_blank"><i class="bi bi-printer"></i></a>
+                            <a href="{{route ('ordrederecettepdf.pdfconsultation', $consultations->id)}}" class="bg-info badge" target="_blank"><i class="bi bi-printer"></i></a>
                         </td>
 
                     </tr>
-                    @endforeach
+                   @endforeach
 
                     <tr>
-                        <td></td>
                         <td></td>
                         <td></td>
                         <td></td>
@@ -70,7 +70,7 @@
                 </tbody>
             </table>
             <ul class="pagination d-flex flex-row mt-3 pagination-center">
-                {{$recette_consultation->onEachSide(1)->links()}}
+                {{$consultation->onEachSide(1)->links()}}
             </ul>
         </div>
     </div>

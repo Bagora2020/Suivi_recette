@@ -34,32 +34,41 @@
 
   <li class="nav-item">
     @if(Auth::check() && !Auth::user()->role_as == '1')
-        <a class="nav-link disabled" href="#" aria-disabled="true">
-            <i class="bi bi-heart-pulse"></i>
-            <span>Tickets Consultation</span>
+        <a class="nav-link collapsed disabled" href="#" data-toggle="collapse" data-target="#collapseTable" aria-expanded="true"
+          aria-controls="collapseTable">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Tickets</span>
         </a>
     @else
-        <a class="nav-link" href="{{ route('consultation.index') }}">
-            <i class="bi bi-heart-pulse"></i>
-            <span>Tickets Consultation</span>
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTable" aria-expanded="true"
+          aria-controls="collapseTable">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Tickets</span>
         </a>
     @endif
+    
+    <div id="collapseTable" class="collapse" aria-labelledby="headingTable" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Ticket Restauration</h6>
+            @if(Auth::check() && !Auth::user()->role_as == '1')
+                <a class="collapse-item disabled" href="#" aria-disabled="true">Petit Déjeuner</a>
+                <a class="collapse-item disabled" href="#" aria-disabled="true">Déjeuner</a>
+            @else
+                <a class="collapse-item" href="{{ route('consultation.index') }}">Consultation</a>
+                <a class="collapse-item" href="{{ route('musculation.index') }}">Musculation</a>
+                <a class="collapse-item" href="{{ route('ticketpetitdej.indexpetitdej') }}">Petit Déjeuner</a>
+                <a class="collapse-item" href="{{ route('ticketdej.indexdej') }}">Déjeuner</a>
+            @endif
+        </div>
+    </div>
 </li>
 
 
-<li class="nav-item">
-    @if(Auth::check() && !Auth::user()->role_as == '1')
-        <a class="nav-link disabled" href="#" aria-disabled="true">
-            <i class="bi bi-stickies"></i>
-            <span>Tickets salle Musculation</span>
-        </a>
-    @else
-        <a class="nav-link" href="{{ route('musculation.index') }}">
-            <i class="bi bi-stickies"></i>
-            <span>Tickets salle Musculation</span>
-        </a>
-    @endif
-</li>
+
+  
+
+
+
 
 
 <li class="nav-item">
@@ -76,35 +85,24 @@
     @endif
 </li>
 
-
 <li class="nav-item">
     @if(Auth::check() && !Auth::user()->role_as == '1')
-        <a class="nav-link collapsed disabled" href="#" data-toggle="collapse" data-target="#collapseTable" aria-expanded="true"
-          aria-controls="collapseTable">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Ticket Restauration</span>
+        <a class="nav-link disabled" href="#" aria-disabled="true">
+            <i class="bi bi-capsule-pill"></i>
+            <span>Petit Pain</span>
         </a>
     @else
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTable" aria-expanded="true"
-          aria-controls="collapseTable">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Ticket Restauration</span>
+        <a class="nav-link" href="{{ route('pain.index') }}">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bandaid" viewBox="0 0 16 16">
+  <path d="M14.121 1.879a3 3 0 0 0-4.242 0L8.733 3.026l4.261 4.26 1.127-1.165a3 3 0 0 0 0-4.242M12.293 8 8.027 3.734 3.738 8.031 8 12.293zm-5.006 4.994L3.03 8.737 1.879 9.88a3 3 0 0 0 4.241 4.24l.006-.006 1.16-1.121ZM2.679 7.676l6.492-6.504a4 4 0 0 1 5.66 5.653l-1.477 1.529-5.006 5.006-1.523 1.472a4 4 0 0 1-5.653-5.66l.001-.002 1.505-1.492z"/>
+  <path d="M5.56 7.646a.5.5 0 1 1-.706.708.5.5 0 0 1 .707-.708Zm1.415-1.414a.5.5 0 1 1-.707.707.5.5 0 0 1 .707-.707M8.39 4.818a.5.5 0 1 1-.708.707.5.5 0 0 1 .707-.707Zm0 5.657a.5.5 0 1 1-.708.707.5.5 0 0 1 .707-.707ZM9.803 9.06a.5.5 0 1 1-.707.708.5.5 0 0 1 .707-.707Zm1.414-1.414a.5.5 0 1 1-.706.708.5.5 0 0 1 .707-.708ZM6.975 9.06a.5.5 0 1 1-.707.708.5.5 0 0 1 .707-.707ZM8.39 7.646a.5.5 0 1 1-.708.708.5.5 0 0 1 .707-.708Zm1.413-1.414a.5.5 0 1 1-.707.707.5.5 0 0 1 .707-.707"/>
+</svg>
+        <span>Petit Pain</span>
         </a>
     @endif
-    
-    <div id="collapseTable" class="collapse" aria-labelledby="headingTable" data-parent="#accordionSidebar">
-        <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Ticket Restauration</h6>
-            @if(Auth::check() && !Auth::user()->role_as == '1')
-                <a class="collapse-item disabled" href="#" aria-disabled="true">Petit Déjeuner</a>
-                <a class="collapse-item disabled" href="#" aria-disabled="true">Déjeuner</a>
-            @else
-                <a class="collapse-item" href="{{ route('TicketRestauration.indexpetidej') }}">Petit Déjeuner</a>
-                <a class="collapse-item" href="{{ route('TicketRestauration.indexdej') }}">Déjeuner</a>
-            @endif
-        </div>
-    </div>
 </li>
+
+
 
 
 
@@ -164,6 +162,36 @@
         <a class="nav-link" href="{{ route('terrainmultisport.index') }}">
             <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M4.462 7V3.615l3.384 1.693zm12.692 0V3.615l3.384 1.693zm-5.923-.846V2.769l3.384 1.693zM10.5 21.288q-1.727-.069-3.124-.293q-1.397-.224-2.398-.557q-1.001-.332-1.547-.751q-.546-.42-.546-.88v-8.23q0-.529.681-.98q.682-.45 1.897-.786q1.216-.336 2.887-.535q1.671-.2 3.65-.2t3.65.2q1.671.199 2.887.535q1.215.335 1.897.786q.681.451.681.98v8.23q0 .46-.546.88q-.546.419-1.547.751q-1 .333-2.398.557q-1.397.224-3.124.293v-3.98h-3zm1.5-9.211q2.483 0 4.649-.393q2.166-.394 3.236-1.038q-.327-.529-2.39-1.049q-2.064-.52-5.495-.52t-5.494.52q-2.064.52-2.39 1.05q1.069.643 3.014 1.037q1.945.393 4.87.393m-2.5 8.138v-3.907h5v3.907q2.365-.18 3.804-.626q1.438-.445 1.811-.88v-7.063q-1.644.762-3.661 1.096q-2.017.335-4.454.335t-4.454-.335q-2.017-.334-3.661-1.096v7.064q.373.434 1.696.88t3.919.625m2.5-4.294"/></svg>    
             <span>Terrain Multisport</span>
+        </a>
+    @endif
+</li>
+
+
+<li class="nav-item">
+    @if(Auth::check() && !Auth::user()->role_as == '1')
+        <a class="nav-link disabled" href="#" aria-disabled="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M4.462 7V3.615l3.384 1.693zm12.692 0V3.615l3.384 1.693zm-5.923-.846V2.769l3.384 1.693zM10.5 21.288q-1.727-.069-3.124-.293q-1.397-.224-2.398-.557q-1.001-.332-1.547-.751q-.546-.42-.546-.88v-8.23q0-.529.681-.98q.682-.45 1.897-.786q1.216-.336 2.887-.535q1.671-.2 3.65-.2t3.65.2q1.671.199 2.887.535q1.215.335 1.897.786q.681.451.681.98v8.23q0 .46-.546.88q-.546.419-1.547.751q-1 .333-2.398.557q-1.397.224-3.124.293v-3.98h-3zm1.5-9.211q2.483 0 4.649-.393q2.166-.394 3.236-1.038q-.327-.529-2.39-1.049q-2.064-.52-5.495-.52t-5.494.52q-2.064.52-2.39 1.05q1.069.643 3.014 1.037q1.945.393 4.87.393m-2.5 8.138v-3.907h5v3.907q2.365-.18 3.804-.626q1.438-.445 1.811-.88v-7.063q-1.644.762-3.661 1.096q-2.017.335-4.454.335t-4.454-.335q-2.017-.334-3.661-1.096v7.064q.373.434 1.696.88t3.919.625m2.5-4.294"/></svg>    
+            <span>Location Cantines</span>
+        </a>
+    @else
+        <a class="nav-link" href="{{ route('Cantines.index') }}">
+        <i class="fa-solid fa-shop"></i>
+            <span>Location Cantines</span>
+        </a>
+    @endif
+</li>
+
+
+<li class="nav-item">
+    @if(Auth::check() && !Auth::user()->role_as == '1')
+        <a class="nav-link disabled" href="#" aria-disabled="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M4.462 7V3.615l3.384 1.693zm12.692 0V3.615l3.384 1.693zm-5.923-.846V2.769l3.384 1.693zM10.5 21.288q-1.727-.069-3.124-.293q-1.397-.224-2.398-.557q-1.001-.332-1.547-.751q-.546-.42-.546-.88v-8.23q0-.529.681-.98q.682-.45 1.897-.786q1.216-.336 2.887-.535q1.671-.2 3.65-.2t3.65.2q1.671.199 2.887.535q1.215.335 1.897.786q.681.451.681.98v8.23q0 .46-.546.88q-.546.419-1.547.751q-1 .333-2.398.557q-1.397.224-3.124.293v-3.98h-3zm1.5-9.211q2.483 0 4.649-.393q2.166-.394 3.236-1.038q-.327-.529-2.39-1.049q-2.064-.52-5.495-.52t-5.494.52q-2.064.52-2.39 1.05q1.069.643 3.014 1.037q1.945.393 4.87.393m-2.5 8.138v-3.907h5v3.907q2.365-.18 3.804-.626q1.438-.445 1.811-.88v-7.063q-1.644.762-3.661 1.096q-2.017.335-4.454.335t-4.454-.335q-2.017-.334-3.661-1.096v7.064q.373.434 1.696.88t3.919.625m2.5-4.294"/></svg>    
+            <span>Chambres Etudiants</span>
+        </a>
+    @else
+        <a class="nav-link" href="{{ route('ChambreEtudiant.index') }}">
+        <i class="fa-solid fa-bed"></i>
+            <span>Chambres Etudiants</span>
         </a>
     @endif
 </li>
