@@ -12,7 +12,10 @@ use App\Models\Musculation;
 use App\Models\Consultation;
 use App\Models\OrdreRecette;
 use Illuminate\Http\Request;
+use App\Models\recetteticket;
 use App\Models\sallecafetaria;
+use App\Models\BudgetDefinitif;
+use App\Models\ChambreEtudiant;
 use App\Models\dashbordgeneral;
 use App\Models\terrainmultisport;
 
@@ -33,29 +36,38 @@ class DashbordgeneralController extends Controller
         $total_recette_terrainmultisport=  $this->recette_terrain_multisport($date);
         $total_recette_terrainmultisport=  $this->recette_terrain_multisport($date);
         $total_recette_cantines= $this->recette_Cantines($date);
-        
-
+        $total_recette_ChmbreEt= $this->Recette_LoyerEtudiant($date);
+     
         $total_recette_consultation = $this->totalConsultation($date);
         $total_recette_musculation = $this->totalMusculation($date);
         $total_recette_medicament = $this->totalMedicament($date);
-        $total_recette_petitdejj = $this->total_petit_dej($date);
-        $total_recette_ticketdej = $this->total_dej($date);
+
         $total_recette_Pain = $this->total_Pain($date);
+        $total_recette_recetteticket = $this->Recette_ticket($date);
+
+
+        $total_recette_budget = $this->budgetdefinitif($date);
+       
+   
         
+        $recette_vente= $this->totalConsultation($date) + $this->Recette_ticket($date) + $this->totalMedicament($date) + $this->total_Pain($date);
+ 
         
-        
-        $recette_vente= $this->totalConsultation($date) + $this->total_petit_dej($date) + $this->totalMusculation($date) + $this->totalMedicament($date) + $this->total_dej($date) + $this->total_Pain($date);
-        
-      
-        
-        $recette_location = $this->total_recette_greenvibes($date) + $this->total_recette_sallecafetaria($date) + $this->recette_terrain_multisport($date) + $this->recette_Cantines($date);
-        
+        $recette_location = $this->total_recette_greenvibes($date) + $this->total_recette_sallecafetaria($date) + $this->recette_terrain_multisport($date) + $this->recette_Cantines($date) +  $this->Recette_LoyerEtudiant($date);
+    
+
         $recette_total= $recette_vente + $recette_location;
 
-        $total_recette = [$recette_vente, $recette_location];
-      
 
-        return view('dashboardgeneral', compact('recette_location', 'recette_vente', 'recette_total', 'total_recette'));
+        $reste= $total_recette_budget - $recette_total;
+        
+        $taux= ($recette_total/ $total_recette_budget)*100;
+        
+        $total_recette = [$total_recette_budget, $recette_total];
+      
+       
+
+        return view('dashboardgeneral', compact('taux','total_recette_budget','reste','recette_location', 'recette_vente', 'recette_total', 'total_recette'));
     }
 
 
@@ -141,29 +153,6 @@ private function recette_terrain_multisport($date){
     }
 
 
-    private function total_petit_dej($date)
-    {
-        $recette_petitdej = Petitdej::whereYear('date', $date)->get();
-
-        $total_recette_petitdejj = 0;
-        foreach ($recette_petitdej  as $recette_petitdejj) {
-            $total_recette_petitdejj += $recette_petitdejj->montant;
-        }
-        return $total_recette_petitdejj;
-    }
-
-    private function total_dej($date)
-    {
-        $recette_ticketdej = OrdreRecette::whereYear('date', $date)->get();
-
-
-        $total_recette_ticketdej = 0;
-        foreach ($recette_ticketdej  as $recette_ticketdejj) {
-            $total_recette_ticketdej += $recette_ticketdejj->montant;
-        }
-        return $total_recette_ticketdej;
-    }    
-
     private function total_pain($date)
     {
         $recette_Pain = Pain::whereYear('date', $date)->get();
@@ -175,5 +164,35 @@ private function recette_terrain_multisport($date){
         }
         return $total_recette_Pain;
     }
+
+    private function budgetdefinitif($date){
+        $budgetdefinitif = BudgetDefinitif::whereYear('date', $date)->get();
+
+
+        $total_recette_budget = 0;
+        foreach ($budgetdefinitif  as $BudgetDefinitifs) {
+            $total_recette_budget += $BudgetDefinitifs->budget;
+        }
+        return $total_recette_budget;
     
+}
+    private function Recette_ticket($date){
+        $recetteticket = recetteticket::whereYear('date', $date)->get();
+
+        $total_recette_recetteticket = 0;
+        foreach($recetteticket as $recettetickets) {
+            $total_recette_recetteticket += $recettetickets->montant;  
+        }
+        return $total_recette_recetteticket;
+    }
+  
+    private function Recette_LoyerEtudiant($date){
+        $ChmbreEt = ChambreEtudiant::whereYear('datepaiement', $date)->get();
+
+        $total_recette_ChmbreEt = 0;
+        foreach($ChmbreEt as $ChmbreEts) {
+            $total_recette_ChmbreEt += $ChmbreEts->montant;
+        }
+        return $total_recette_ChmbreEt;
+    }
 }

@@ -34,8 +34,8 @@
                     </div>
 
                     <div class="col-12 col-md-6">
-                        <label for="">Nom Agent</label>
-                        <input type="text" name="nomAgent" class="form-control" placeholder="quantite">
+                        <label for="">Partie Versante</label>
+                        <input type="text" name="nomAgent" class="form-control" placeholder="Partie Versante">
                     </div>
 
                 </div>

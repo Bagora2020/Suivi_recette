@@ -14,8 +14,6 @@ return new class extends Migration
         Schema::create('medicaments', function (Blueprint $table) {
             $table->id();
             $table->string('objetRecette');
-            $table->integer('quantite');
-            $table->integer('pu');
             $table->integer('montant');
             $table->date('date');
             $table->string('nomAgent');

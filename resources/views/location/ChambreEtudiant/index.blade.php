@@ -17,7 +17,7 @@
                 <i class="bi bi-folder-plus"></i>
             </a>
 
-            <table class="table table-hover mt-3">
+            <table id="example" class="table table-hover mt-3">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
@@ -25,6 +25,7 @@
                         <th scope="col">Mois</th>
                         <th scope="col">Montant</th>
                         <th scope="col">Date Paiement</th>
+                        <th scope="col">Nom Agent</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
@@ -34,9 +35,9 @@
                         <th scope="row">{{$ChmbreEts->id }}</th>
                         <td>{{$ChmbreEts->objetrecette }}</td>
                         <td>{{$ChmbreEts->mois }}</td>
-                        <td>{{$ChmbreEts->montant }}</td>
+                        <td>{{number_format($ChmbreEts->montant) }}</td>
                         <td>{{$ChmbreEts->datepaiement }}</td>
-                        
+                        <td>{{$ChmbreEts->nomAgent }} </td>
                         <td class="d-flex flex-row justify-content-between">
                             <a href="{{route('ChambreEtudiant.edit', $ChmbreEts->id)}}" class="bg-warning badge "><i class="bi bi-pencil-fill"></i></a>
 
@@ -50,7 +51,7 @@
                             </form>
 
 
-                            <a href="#" class="bg-info badge" target="_blank"><i class="bi bi-printer"></i></a>
+                            <a href="{{route ('ordrederecettepdf.pdfChambreEtudiant', $ChmbreEts->id)}}" class="bg-info badge" target="_blank"><i class="bi bi-printer"></i></a>
                         </td>
 
                     </tr>
@@ -59,7 +60,10 @@
                         <td></td>
                         <td></td>
                         <td>Total</td>
-                        <td>{{ $total_recette_ChmbreEt }}</td>
+                        <td>{{ number_format($total_recette_ChmbreEt) }}</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                     </tr>
                 </tbody>
             </table>

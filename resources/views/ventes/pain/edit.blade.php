@@ -21,7 +21,7 @@
                     </div>
 
                     <div class="col-12 col-md-6">
-                        <label for="">Nom Agent</label>
+                        <label for="">Partie Versante</label>
                         <input type="text" name="nomAgent" class="form-control" placeholder="Nom Agent" value="{{$Pain->nomAgent}}">
                     </div>
 

@@ -162,20 +162,29 @@
                margin-bottom: 5%;
                width: 100%;
           }
-
           .ordonnateur {
-               font-weight: bolder;
-               font-size: 20px;
-               text-decoration: underline;
-               float: left;
-          }
+            font-weight: bolder;
+            font-size: 20px;
+            text-decoration: underline;
+            float: left;
+            margin: 3.5%;
 
-          .directeur {
-               font-weight: bolder;
-               font-size: 20px;
-               text-decoration: underline;
-               float: right;
-          }
+        }
+
+        .recouvrement {
+            font-weight: bolder;
+            font-size: 20px;
+            text-decoration: underline;
+            margin: 3.5%;    
+        }
+        .caissier {
+            font-weight: bolder;
+            font-size: 20px;
+            text-decoration: underline;
+            float: right;
+            margin: 1.5%;
+            
+        }
 
           .text-sub-tab {
                font-size: 20px;
@@ -232,9 +241,9 @@
      </header>
   
      <div class="contain">
-          <h1>ORDRE DE RECETTES N°00{{$invoice1->id}} </h1>
+          <h1>ORDRE DE RECETTES N° </h1>
           <p class="text-ordre-recette">
-               Le chef du Service de recouvrement du CROUS/Z est invité à recevoir de <br>.................................................la somme de .................................................<br>
+               Le chef du Service de recouvrement du CROUS/Z est invité à recevoir de <br><b>{{$invoice1->PartieVersante}}</b> la somme de .................................................<br>
                ({{$invoice1->montant}} CFA)
           </p>
           
@@ -250,8 +259,7 @@
               
                     <tr>
                          <td class="motif">
-                              <span>En espèce le {{$invoice1->date}}</span> <br>
-                              <p>Paiement Salle Foyer Alpha SANE <br> Quitance N°00{{$invoice1->id}}</p>
+                              <p><b>Location Salle Foyer</b></p>
                          </td>
                          <td class="td-montant border-visible">
                          {{$invoice1->montant}}
@@ -268,15 +276,20 @@
               
           </table>
           <div class="signatures">
-               <div class="ordonnateur">
-                    Sous-ordonnateur:
-               </div>
-               <div class="directeur">
-                    DIRECTEUR :
-               </div>
+            <div class="ordonnateur">
+                Chef de service de suivi des recettes:
+            </div>
+           
+            <div class="caissier">
+                pour le Comptable <br> Le Caissier :
+            </div>
+
+            <div class="recouvrement">
+               Chef de service recouvrement :
+            </div>
           </div>
           <div class="text-sub-tab">
-               Cette somme sera portée dans les écritures du Chef du Service du Budget au compte 707315 : Location Salle Foyer Alpha SANE
+               Cette somme sera portée dans les écritures du Chef du Service du Budget au compte 707315 : Location Salle Foyer
           </div>
      </div>
      <footer class="footer">

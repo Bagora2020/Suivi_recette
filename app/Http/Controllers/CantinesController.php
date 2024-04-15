@@ -37,7 +37,8 @@ class CantinesController extends Controller
             'nomLoc' => $request->nomLoc,
             'mois' => $request->mois,
             'montant' => $request->montant,
-            'date' => $request->date
+            'date' => $request->date,
+            'nomAgent' => $request->nomAgent
         ]);
 
         return redirect()->route('Cantines.index')->with('success', 'ajouter avec succés');

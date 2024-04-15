@@ -17,7 +17,7 @@
                 <i class="bi bi-folder-plus"></i>
             </a>
 
-            <table class="table table-hover mt-3">
+            <table id="example" class="table table-hover mt-3">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
@@ -27,6 +27,7 @@
                         <th scope="col">Mois</th>
                         <th scope="col">Montant</th>
                         <th scope="col">Date Paiement</th>
+                        <th scope="col">Nom Agent</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
@@ -38,10 +39,9 @@
                         <td>{{$cantines->numero }}</td>
                         <td>{{$cantines->nomLoc }}</td>
                         <td>{{$cantines->mois }}</td>
-                        <td>{{$cantines->montant }}</td>
+                        <td>{{number_format($cantines->montant) }}</td>
                         <td>{{$cantines->date }}</td>
-                        
-
+                        <td>{{$cantines->nomAgent }} </td>
                         
                         <td class="d-flex flex-row justify-content-between">
                             <a href="{{route('Cantines.edit', $cantines->id)}}" class="bg-warning badge "><i class="bi bi-pencil-fill"></i></a>
@@ -67,7 +67,10 @@
                         <td></td>
                         <td></td>
                         <td>Total</td>
-                        <td>{{ $total_recette_cantines }}</td>
+                        <td>{{ number_format($total_recette_cantines)}}</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                     </tr>
                 </tbody>
             </table>

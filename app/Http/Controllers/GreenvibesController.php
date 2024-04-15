@@ -32,7 +32,8 @@ class GreenvibesController extends Controller
             'objetrecette' => $request->objetrecette,
             'mois' => $request->mois,
             'montant' => $request->montant,
-            'datepaiement' => $request->datepaiement
+            'datepaiement' => $request->datepaiement,
+            'nomAgent' => $request->nomAgent
         ]);
 
         return redirect()->route('greenvibes.index')->with('success', 'ajouter avec succés');

@@ -21,7 +21,7 @@
                         <input type="text" class="form-control rounded-3" placeholder="objet recette" name="objetrecette">
                     </div>
                     <div class="col-12 col-md-6">
-                    <label for="">Mois</label>
+                        <label for="">Mois</label>
                         <select name="mois" class="form-select">
                             <option value="Janvier">Janvier</option>
                             <option value="Février">Février</option>
@@ -47,12 +47,21 @@
                         <label for="">Date Paiement</label>
                         <input type="Date" name="datepaiement" class="form-control" placeholder="Date">
                     </div>
+
+                    <div class="col-12 col-md-6">
+                        <label for="">Nom Agent</label>
+                        <input type="text" name="nomAgent" class="form-control" placeholder="quantite">
+                    </div>
                 </div>
-               
+
                 <div class="row mb-3">
                     <div class="col-offset-4">
                         <button class="btn-success btn" type="submit">Enregistrer</button>
                     </div>
+
+
+
+
                 </div>
             </form>
         </div>

@@ -17,16 +17,14 @@
                 <i class="bi bi-folder-plus"></i>
             </a>
            
-            <table class="table table-hover mt-3">
+            <table id="example" class="table table-hover mt-3" id="exampele">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Nom Locataire</th>
-                        <th scope="col">Contact</th>
-                        <th scope="col">Statut</th>
-                        <th scope="col">Date</th>
-                        <th scope="col">Durée</th>
+                        <th scope="col">#</th> 
+                        <th scope="col">Objet Recette</th>
                         <th scope="col">Montant</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Partie Versante</th>
                         <th scope="col">Actions</th>
                     </tr>
                 </thead>
@@ -34,13 +32,11 @@
                     @foreach($terrainmultisport as $ternmultisport)
                     <tr>
                         <th scope="row">{{$ternmultisport->id }}</th>
-                        <td>{{$ternmultisport->nomLocataire }}</td>
-                        <td>{{$ternmultisport->contact }}</td>
-                        <td>{{$ternmultisport->statut }}</td>
+                        <td>{{$ternmultisport->ObjetRecette }}</td>
+                        <td>{{number_format($ternmultisport->montant)}}</td>
                         <td>{{$ternmultisport->date }}</td>
-                        <td>De {{$ternmultisport->debutmatch}} à {{$ternmultisport->debutmatch}}</td>
-                        <td>{{$ternmultisport->montant }}</td>
-                      
+                        <td>{{$ternmultisport->PartieVersante }}</td>
+                    
                         
                         <td class="d-flex flex-row justify-content-between">
                             <a href="{{route('terrainmultisport.edit', $ternmultisport->id)}}" class="bg-warning badge "><i class="bi bi-pencil-fill"></i></a>
@@ -63,14 +59,13 @@
                     @endforeach
 
                     <tr>
-                        
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+   
                         <td></td>
                         <td>Total</td>
-                        <td>{{$total_recette_terrainmultisport}}</td>
+                        <td>{{number_format($total_recette_terrainmultisport)}}</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                     </tr>
                 </tbody>
             </table>

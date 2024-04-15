@@ -164,18 +164,29 @@
           }
 
           .ordonnateur {
-               font-weight: bolder;
-               font-size: 20px;
-               text-decoration: underline;
-               float: left;
-          }
+            font-weight: bolder;
+            font-size: 20px;
+            text-decoration: underline;
+            float: left;
+            margin: 3.5%;
 
-          .directeur {
-               font-weight: bolder;
-               font-size: 20px;
-               text-decoration: underline;
-               float: right;
-          }
+        }
+
+        .recouvrement {
+            font-weight: bolder;
+            font-size: 20px;
+            text-decoration: underline;
+            margin: 3.5%;    
+        }
+        .caissier {
+            font-weight: bolder;
+            font-size: 20px;
+            text-decoration: underline;
+            float: right;
+            margin: 1.5%;
+            
+        }
+
 
           .text-sub-tab {
                font-size: 20px;
@@ -219,7 +230,7 @@
                     SERVICE DU SUIVI DES RECETTES</h5>
                <h3>
                     Enregistré sous le compte</h3>
-               <h3>707315</h3>
+               <h3>70733</h3>
           </div>
           <div class="right-side">
                <span class="card card-green">
@@ -232,10 +243,10 @@
      </header>
   
      <div class="contain">
-          <h1>ORDRE DE RECETTES N°00{{$invoice2->id}} </h1>
+          <h1>ORDRE DE RECETTES N° </h1>
           <p class="text-ordre-recette">
-               Le chef du Service de recouvrement du CROUS/Z est invité à recevoir de <br>............................................... la somme ..............................................<br>
-               ({{$invoice2->montant}} CFA)
+               Le chef du Service de recouvrement du CROUS/Z est invité à recevoir de <b>{{$invoice2->PartieVersante}}</b> la somme <b>{{$total_lettre}}
+               ({{$invoice2->montant}} CFA).</b>
           </p>
           
           <table>
@@ -250,8 +261,8 @@
               
                     <tr>
                          <td class="motif">
-                              <span>En espèce le {{$invoice2->date}}</span> <br>
-                              <p>Paiement Location Terrain Multisport <br> Quitance N°00{{$invoice2->id}}</p>
+                          
+                              <p><b>Location Terrain Multifonctionnel</b></p>
                          </td>
                          <td class="td-montant border-visible">
                          {{$invoice2->montant}}
@@ -268,15 +279,20 @@
               
           </table>
           <div class="signatures">
-               <div class="ordonnateur">
-                    Sous-ordonnateur:
-               </div>
-               <div class="directeur">
-                    DIRECTEUR :
-               </div>
+            <div class="ordonnateur">
+                Chef de service de suivi des recettes:
+            </div>
+           
+            <div class="caissier">
+                pour le Comptable <br> Le Caissier :
+            </div>
+
+            <div class="recouvrement">
+               Chef de service recouvrement :
+            </div>
           </div>
           <div class="text-sub-tab">
-               Cette somme sera portée dans les écritures du Chef du Service du Budget au compte 707315 : Location Terrain Multisport
+               Cette somme sera portée dans les écritures du Chef du Service du Budget au compte 70733 : Location Terrain Multifonctionnel
           </div>
      </div>
      <footer class="footer">

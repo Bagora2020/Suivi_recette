@@ -45,8 +45,8 @@
             <div class="card-body">
               <div class="row align-items-center">
                 <div class="col mr-2">
-                  <div class="text-xs font-weight-bold text-uppercase mb-1">Recette Location</div>
-                  <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $recette_location }} FCFA</div>
+                  <div class="text-xs font-weight-bold text-uppercase mb-1">BUDGET</div>
+                  <div class="h5 mb-0 font-weight-bold text-gray-800">{{number_format($total_recette_budget)}} FCFA</div>
                   <div class="mt-2 mb-0 text-muted text-xs">
                     <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> </span>
                     <span>Recette Location</span>
@@ -66,8 +66,8 @@
             <div class="card-body">
               <div class="row no-gutters align-items-center">
                 <div class="col mr-2">
-                  <div class="text-xs font-weight-bold text-uppercase mb-1">Recette Ventes</div>
-                  <div class="h5 mb-0 font-weight-bold text-gray-800">{{$recette_vente}} FCFA</div>
+                  <div class="text-xs font-weight-bold text-uppercase mb-1">REALISATION ACTUELLE</div>
+                  <div class="h5 mb-0 font-weight-bold text-gray-800">{{number_format($recette_total)}} FCFA</div>
                   <div class="mt-2 mb-0 text-muted text-xs">
                     <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> </span>
                     <span>recette Ventes</span>
@@ -87,8 +87,8 @@
             <div class="card-body">
               <div class="row no-gutters align-items-center">
                 <div class="col mr-2">
-                  <div class="text-xs font-weight-bold text-uppercase mb-1">Recette Totale</div>
-                  <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{$recette_total}} FCFA </div>
+                  <div class="text-xs font-weight-bold text-uppercase mb-1">RESTE A REALISER</div>
+                  <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{number_format($reste)}} FCFA </div>
                   <div class="mt-2 mb-0 text-muted text-xs">
                     <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> </span>
                     <span>Recette totale</span>
@@ -107,20 +107,22 @@
             <div class="card-body">
               <div class="row no-gutters align-items-center">
                 <div class="col mr-2">
-                  <div class="text-xs font-weight-bold text-uppercase mb-1"></div>
-                  <div class="h5 mb-0 font-weight-bold text-gray-800"> </div>
+                  <div class="text-xs font-weight-bold text-uppercase mb-1">TAUX ACTUEL</div>
+                  <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ $taux }}% </div>
                   <div class="mt-2 mb-0 text-muted text-xs">
-                    <span class="text-danger mr-2"><i class="fas fa-arrrow-down"></i></span>
-                    <span></span>
+                    <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> </span>
+                    <span>Recette totale</span>
                   </div>
                 </div>
                 <div class="col-auto">
-                  <i class="fas fa-commments fa-2x text-warning"></i>
+                  <i class="fa-solid fa-money-check-dollar text-primary fs-3"></i>
                 </div>
               </div>
             </div>
           </div>
         </div>
+
+        
 
         <div class="col-xl-3 col-md-6 mb-4">
           <div class="card h-100">
@@ -170,8 +172,8 @@
       'id': 'amount'
     });
     dataTable.addRows([
-      ['recette Vente', jsonData[0]],
-      ['recette Location', jsonData[1]],
+      ['Budget', jsonData[0]],
+      ['Realisation', jsonData[1]],
       //   ['C', 43],
       //   ['D', 91],
       //   ['E', 81],

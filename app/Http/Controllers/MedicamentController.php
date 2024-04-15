@@ -30,9 +30,7 @@ class MedicamentController extends Controller
         $data->create([
 
             'objetRecette'=> $request->objetRecette,
-            'quantite' => $request->quantite,
-            'pu' => $request->pu,
-            'montant' => $request->quantite *  $request->pu,
+            'montant' => $request->montant, 
             'date' => $request->date,
             'nomAgent' => $request->nomAgent,
 

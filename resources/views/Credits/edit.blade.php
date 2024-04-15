@@ -10,32 +10,34 @@
             </button>
         </div>
         <div class="card-body">
-        <form action="{{route('ticketpetitdej.update', $ticketpetitdej->id)}}" class="p-3" method="post">
+        <form action="{{route('Credits.update', $credits->id)}}" class="p-3" method="post">
                  @csrf
                  @method('PUT')
                 
                  <div class="row mb-3">
                     <div class="col-12 col-md-6">
-                        <label for="">Quantité</label>
-                        <input type="number" name="quantite" class="form-control" placeholder="quantite" value="{{$ticketpetitdej->quantite}}">
+                        <label for="comptes_id">Comptes</label>
+                        <select name="comptes_id" class="form-control" id="comptes_id" value="{{$credits->comptes_id}}">
+                            <option value="">Sélectionnez un compte</option>
+                            @foreach($comptes as $compte)
+                            <option value="{{ $compte->id }}">{{ $compte->libelle }}</option>
+                            @endforeach
+                        </select>
                     </div>
 
                     <div class="col-12 col-md-6">
-                        <label for="">Nom Agent</label>
-                        <input type="text" name="nomAgent" class="form-control" placeholder="Nom Agent" value="{{$ticketpetitdej->nomAgent}}">
-                    </div>
+                        <label for="">Prevision</label>
+                        <input type="number" name="prevision" class="form-control" placeholder="PREVISION" value="{{$credits->prevision}}">
+                    </div>               
+              <div>
 
-                </div>
                 <div class="row mb-3">
+                  
                     <div class="col-12 col-md-6">
-                        <label for="">Date de versement</label>
-                        <input type="date" name="date" class="form-control" placeholder="Date" value="{{$ticketpetitdej->date}}">
-                    </div>
-                    <div>
-
+                        <label for="">Budget</label>
+                        <input type="number" name="budget" class="form-control" placeholder="BUDGET" value="{{$credits->budget}}">
                     </div>
                 </div>
-                
 
 
                 <div class="row mb-3">

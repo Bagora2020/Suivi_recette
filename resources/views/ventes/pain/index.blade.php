@@ -17,7 +17,7 @@
                 <i class="bi bi-folder-plus"></i>
             </a>
 
-            <table class="table table-hover mt-3">
+            <table id="example1" class="table table-hover mt-3">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
@@ -38,7 +38,7 @@
                        
                         <td>{{$Pains->quantite }}</td>
                         <td>50</td>
-                        <td>{{$Pains->montant }}</td>
+                        <td>{{number_format($Pains->montant)}}</td>
                         <td>{{$Pains->date }} </td>
                         <td>{{$Pains->nomAgent }} </td>
                         <td class="d-flex flex-row justify-content-between">
@@ -54,7 +54,7 @@
                             </form>
 
 
-                            <a href="#" class="bg-info badge" target="_blank"><i class="bi bi-printer"></i></a>
+                            <a href="{{ route('ordrederecettepdf.pdfpain', $Pains->id) }}" class="bg-info badge" target="_blank"><i class="bi bi-printer"></i></a>
                         </td>
 
                     </tr>
@@ -65,7 +65,10 @@
                         <td></td>
                         <td></td>
                         <td>Total</td>
-                        <td>{{$total_recette_Pain}}</td>
+                        <td>{{number_format($total_recette_Pain)}}</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                     </tr>
                 </tbody>
             </table>

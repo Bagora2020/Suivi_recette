@@ -28,13 +28,12 @@ class TerrainmultisportController extends Controller
 
         $terrainmultisport = New terrainmultisport();
         $terrainmultisport->create([
-            'nomLocataire' => $request->nomLocataire,
-            'contact' => $request->contact,
-            'statut' => $request->statut,
+          
+         
+            'ObjetRecette' => $request->ObjetRecette,
+            'montant' => $request->montant,
             'date' => $request->date,
-            'debutmatch' => $request->debutmatch,
-            'finmatch' => $request->finmatch,
-            'montant' => $request->montant
+            'PartieVersante' => $request->PartieVersante
             
         ]);
 

@@ -31,35 +31,28 @@
 
                     <div class="col-12 col-md-6">
                         <label for="">Objet Recette</label>
-                        <input type="text" name="objetRecette" class="form-control" placeholder="objetRecette">
+                        <input type="text" name="objetRecette" class="form-control" placeholder="objet Recette">
                     </div>
 
                     <div class="col-12 col-md-6">
-                        <label for="">Quantité</label>
-                        <input type="number" name="quantite" class="form-control" placeholder="quantite">
+                        <label for="">Montant</label>
+                        <input type="text" name="montant" class="form-control" placeholder="Montant">
                     </div>
                 </div>
                 <div class="row mb-3">
-                    <div class="col-12 col-md-6">
-                        <label for="">Prix Unitaire</label>
-                        <input type="text" name="pu" class="form-control" placeholder="quantite">
-                    </div>
+                   
 
                     <div class="col-12 col-md-6">
-                        <label for="">Nom Agent</label>
-                        <input type="text" name="nomAgent" class="form-control" placeholder="quantite">
+                        <label for="">Partie Versante</label>
+                        <input type="text" name="nomAgent" class="form-control" placeholder="Partie Versante">
                     </div>
-
-                </div>
-                <div class="row mb-3">
-                  
 
                     <div class="col-12 col-md-6">
                         <label for="">Date de versement</label>
                         <input type="date" name="date" class="form-control" placeholder="Date">
                     </div>
-                    
                 </div>
+             
 
 
                 

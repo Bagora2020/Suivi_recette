@@ -50,7 +50,13 @@ class PainController extends Controller
     public function update(Request $request, $id)
     {
         $Pain = Pain::findOrFail($id);
-        $Pain->update($request->all());
+        $Pain->update([
+            'quantite' => $request->quantite,
+            
+            'montant' => $request->quantite * 50,
+            'date' => $request->date,
+            'nomAgent' => $request->nomAgent,
+        ]);
         return redirect()->route('pain.index')->with('success', 'Article updated successfully');
     }
 

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('nomLoc');
             $table->string('mois');
             $table->integer('montant');
+            $table->string('nomAgent');
             $table->date('date');
             $table->timestamps();
         });

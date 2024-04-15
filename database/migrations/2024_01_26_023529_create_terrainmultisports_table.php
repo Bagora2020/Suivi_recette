@@ -13,13 +13,12 @@ return new class extends Migration
     {
         Schema::create('terrainmultisports', function (Blueprint $table) {
             $table->id();
-            $table->string('nomLocataire');
-            $table->string('contact');
-            $table->string('statut');
+         
+            $table->string('ObjetRecette');
+            $table->bigInteger('montant');
             $table->date('date');
-            $table->time('debutmatch');
-            $table->time('finmatch');
-            $table->integer('montant');
+            $table->string('PartieVersante');
+            
             $table->timestamps();
         });
     }

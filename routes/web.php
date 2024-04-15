@@ -1,8 +1,11 @@
 <?php
 
+use App\Http\Controllers\BudgetDefinitifController;
 use App\Http\Controllers\CantinesController;
 use App\Http\Controllers\ChambreEtudiantController;
+use App\Http\Controllers\CompteController;
 use App\Http\Controllers\ConsultationController;
+use App\Http\Controllers\CreditController;
 use App\Http\Controllers\DashboardventesController;
 use App\Http\Controllers\DashbordgeneralController;
 use App\Http\Controllers\GreenvibesController;
@@ -12,26 +15,33 @@ use App\Http\Controllers\OrdrederecettepdfController;
 use App\Http\Controllers\OrdreRecetteController;
 use App\Http\Controllers\PainController;
 use App\Http\Controllers\PdfCantineController;
+use App\Http\Controllers\PdfChambreEtudiantController;
 use App\Http\Controllers\PdfConsultationController;
 use App\Http\Controllers\PdfdejController;
 use App\Http\Controllers\PdfLocationOrdreReccetteController;
 use App\Http\Controllers\PdfmedicamentController;
 use App\Http\Controllers\PdfmedocController;
 use App\Http\Controllers\PdfMusculationController;
+use App\Http\Controllers\PdfPainController;
 use App\Http\Controllers\PdfpetitdejController;
+use App\Http\Controllers\PdfrecetteticketController;
 use App\Http\Controllers\PdfsalleCafController;
 use App\Http\Controllers\PdfterrainmultisportController;
 use App\Http\Controllers\PetitdejController;
 use App\Http\Controllers\RecetteloctionController;
 use App\Http\Controllers\RecetteRestaurationController;
+use App\Http\Controllers\RecetteticketController;
 use App\Http\Controllers\SallecafetariaController;
 use App\Http\Controllers\TerrainmultisportController;
 use App\Http\Controllers\TicketdejController;
+use App\Http\Controllers\TypeticketController;
+use App\Models\BudgetDefinitif;
 use App\Models\ChambreEtudiant;
 use App\Models\dashboardventes;
 use App\Models\greenvibes;
 use App\Models\Pdfmedicament;
 use App\Models\PdfMusculation;
+use App\Models\PdfPain;
 use App\Models\Pdfpetitdej;
 use App\Models\Pdfterrainmultisport;
 use Illuminate\Support\Facades\Auth;
@@ -69,11 +79,14 @@ Route::middleware(['auth', 'isadmin'])->group(function(){
     Route::get('/Cantine',[CantinesController::class, 'index'])->name('Cantines.index');
     Route::get('/ChambrEtuadint',[ChambreEtudiantController::class, 'index'])->name('ChambreEtudiant.index');
 
+    Route::get('/parametre',[TypeticketController::class, 'index'])->name('typetickets.index');
+    Route::get('/recetteticket',[RecetteticketController::class, 'index'])->name('recetteticket.index');
+    
     // 
     
   });
 
-  
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/acceuil-general',[DashbordgeneralController::class, 'index'])->name('dashboardgeneral');
@@ -89,27 +102,106 @@ Route::get('/pdf-musculation/{id}',[PdfMusculationController::class, 'index'])->
 Route::get('/pdf-petitdej/{id}',[PdfpetitdejController::class, 'index'])->name('ordrederecettepdf.pdfpetitdejeuner');
 Route::get('/pdf-dejeuner/{id}',[PdfdejController::class, 'index'])->name('ordrederecettepdf.pdfdejeuner');
 Route::get('/pdf-medoc/{id}',[PdfmedocController::class, 'index'])->name('ordrederecettepdf.pdfmedoc');
-
-
-
-
-
-/*
-* Routes pour les ordre de recette provenant des consultations
-*/
+Route::get('/pdf-pain/{id}',[PdfPainController::class, 'index'])->name('ordrederecettepdf.pdfpain');
+Route::get('/pdf-ChambreEtudiant/{id}',[PdfChambreEtudiantController::class, 'index'])->name('ordrederecettepdf.pdfChambreEtudiant');
+Route::get('/pdf-recetteticket/{id}',[PdfrecetteticketController::class, 'index'])->name('ordrederecettepdf.pdfrecetteticket');
 
 
 /*
-* Routes pour les ordre de recette provenant des médicaments
+* Routes pour les budgets définitifs
 */
+Route::controller(CreditController::class,'')->group(function(){
+   
+    Route::get('/CreditsIndex', 'index')->name('Credits.index');
+    Route::get('/createCredits', 'create')->name('Credits.create');
+    Route::post('/createAddCredits', 'store')->name('Credits.add');
 
+     //Modifier les informations
+
+     Route::get('/Credits/{id}/edit', 'edit')->name('Credits.edit');
+
+     Route::put('/Credits/{id}', 'update')->name('Credits.update');
+
+    //Supprimer une information
+
+     Route::delete('/delete-Credits/{id}','destroy')->name('Credits.destroy');
+
+    });
+    
+Route::controller(CompteController::class)->group(function(){
+   
+    Route::get('/compteIndex', 'index')->name('comptes.index');
+    Route::get('/createcomptes', 'create')->name('comptes.create');
+    Route::post('/createAddcomptes', 'store')->name('comptes.add');
+
+     //Modifier les informations
+
+     Route::get('/comptes/{id}/edit', 'edit')->name('comptes.edit');
+
+     Route::put('/comptes/{id}', 'update')->name('comptes.update');
+
+    //Supprimer une information
+
+     Route::delete('/delete-comptes/{id}','destroy')->name('comptes.destroy');
+
+    });
+    
+Route::controller(BudgetDefinitifController::class)->group(function(){
+   
+    Route::get('/indexbudget', 'index')->name('budgetdefinitif.index');
+    Route::get('/createbudgetdefinitif', 'create')->name('budgetdefinitif.create');
+    Route::post('/createAddbudgetdefinitif', 'store')->name('budgetdefinitif.add');
+
+     //Modifier les informations
+
+     Route::get('/budgetdefinitif/{id}/edit', 'edit')->name('budgetdefinitif.edit');
+
+     Route::put('/budgetdefinitif/{id}', 'update')->name('budgetdefinitif.update');
+
+    //Supprimer une information
+
+     Route::delete('/delete-budgetdefinitif/{id}','destroy')->name('budgetdefinitif.destroy');
+
+    });
+/*
+* Routes pour les recettes tickets
+*/
+Route::controller(RecetteticketController::class)->group(function(){
+    Route::get('/createRecetteticket', 'create')->name('Recetteticket.create');
+    Route::post('/createAddRecetteticket', 'store')->name('Recetteticket.add');
+
+     //Modifier les informations
+
+     Route::get('/Recetteticket/{id}/edit', 'edit')->name('Recetteticket.edit');
+
+     Route::put('/Recetteticket/{id}', 'update')->name('Recetteticket.update');
+
+    //Supprimer une information
+
+     Route::delete('/delete-Recetteticket/{id}','destroy')->name('Recetteticket.destroy');
+
+});
 
 
 /*
-* Routes pour les ordre de recette provenant de la salle Musculation
+* Routes pour le parametre
 */
 
+Route::controller(TypeticketController::class)->group(function(){
+    Route::get('/createtypeticket', 'create')->name('typetickets.create');
+    Route::post('/createAddtypeticket', 'store')->name('typetickets.add');
 
+     //Modifier les informations
+
+     Route::get('/typeticket/{id}/edit', 'edit')->name('typetickets.edit');
+
+     Route::put('/typeticket/{id}', 'update')->name('typetickets.update');
+
+    //Supprimer une information
+
+     Route::delete('/delete-typeticket/{id}','destroy')->name('typetickets.destroy');
+
+});
 
 
 /*

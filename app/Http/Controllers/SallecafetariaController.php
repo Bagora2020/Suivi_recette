@@ -27,15 +27,12 @@ class SallecafetariaController extends Controller
 
         $sallecafetaria = New Sallecafetaria();
         $sallecafetaria->create([
-            'nomlocataire' => $request->nomlocataire,
-            'contactresponsable' => $request->contactresponsable,
-            'statut' => $request->statut,
-            'natureActivite' => $request->natureActivite,
-            'motif' => $request->motif,
+         
+            'ObjetRecette' => $request->ObjetRecette,
+            'montant' => $request->montant,
             'date' => $request->date,
-            'debutAct' => $request->debutAct,
-            'finAct' => $request->finAct,
-            'montant' => $request->montant
+          
+            'PartieVersante' => $request->PartieVersante
         ]);
 
         return redirect()->route('sallecafetaria.index')->with('success', 'ajouter avec succés');

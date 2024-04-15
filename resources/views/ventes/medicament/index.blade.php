@@ -18,15 +18,13 @@
             </a>
 
           
-            <table class="table table-hover mt-3">
+            <table id="example1" class="table table-hover mt-3">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Objet recette</th>
-                        <th scope="col">Quantité</th>
-                        <th scope="col">Prix Unitaire</th>
                         <th scope="col">Montant</th>
-                        <th scope="col">Nom Agent</th>
+                        <th scope="col">Partie Versante</th>
                         <th scope="col">Date</th>
                         <th scope="col">Action</th>
                     </tr>
@@ -36,9 +34,7 @@
                     <tr>
                         <th scope="row">{{$medicaments->id }}</th>
                         <td>{{$medicaments->objetRecette}} </td>
-                        <td>{{$medicaments->quantite}} </td>
-                        <td>{{$medicaments->pu}} </td>
-                        <td>{{$medicaments->montant}} </td>
+                        <td>{{number_format($medicaments->montant)}} </td>
                         <td>{{$medicaments->nomAgent}} </td>
                         <td>{{$medicaments->date}} </td>
                         <td class="d-flex flex-row justify-content-between">
@@ -61,11 +57,12 @@
 
                     <tr>
                     <td></td>
-                    <td></td>
-                    <td></td>
-                    
                     <td>Total</td>
-                    <td>{{$total_recette_medicament}}</td>
+                    <td>{{number_format($total_recette_medicament)}}</td>
+                    <td></td>     
+                    <td></td>
+                    <td></td>
+                   
                     </tr>
                 </tbody>
             </table>

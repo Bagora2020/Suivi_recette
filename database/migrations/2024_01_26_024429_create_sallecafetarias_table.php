@@ -13,15 +13,13 @@ return new class extends Migration
     {
         Schema::create('sallecafetarias', function (Blueprint $table) {
             $table->id();
-            $table->string('nomlocataire');
-            $table->string('contactresponsable');
-            $table->string('statut');
-            $table->string('natureActivite');
-            $table->string('motif');
+          
+           
+            $table->string('ObjetRecette');
+            $table->bigInteger('montant');
             $table->date('date');
-            $table->time('debutAct');
-            $table->time('finAct');
-            $table->integer('montant');
+            $table->string('PartieVersante');
+            
             $table->timestamps();
         });
     }

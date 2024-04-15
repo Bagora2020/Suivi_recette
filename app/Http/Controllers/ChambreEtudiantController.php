@@ -32,7 +32,8 @@ class ChambreEtudiantController extends Controller
             'objetrecette' => $request->objetrecette,
             'mois' => $request->mois,
             'montant' => $request->montant,
-            'datepaiement' => $request->datepaiement
+            'datepaiement' => $request->datepaiement,
+            'nomAgent' => $request->nomAgent
         ]);
 
         return redirect()->route('ChambreEtudiant.index')->with('success', 'ajouter avec succés');

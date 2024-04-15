@@ -44,11 +44,11 @@
                         <div class="card-body">
                             <div class="row align-items-center">
                                 <div class="col mr-2">
-                                    <div class="text-xs font-weight-bold text-uppercase mb-1">Recette Consultation</div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{$total_recette_consultation}} FCFA</div>
+                                    <div class="text-xs font-weight-bold text-uppercase mb-1">Recettes tickets</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{number_format($total_recette_tickets)}} FCFA</div>
                                     <div class="mt-2 mb-0 text-muted text-xs">
                                         <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> </span>
-                                        <span>Recette Consultation</span>
+                                        <span>Recette Ticket</span>
                                     </div>
                                 </div>
                                 <div class="col-auto">
@@ -59,25 +59,7 @@
                     </div>
                 </div>
 
-                <div class="col-xl-3 col-md-6 mb-4">
-                    <div class="card h-100 px-3">
-                        <div class="card-body">
-                            <div class="row no-gutters align-items-center">
-                                <div class="col mr-2">
-                                    <div class="text-xs font-weight-bold text-uppercase mb-1">Recette Salle Musculation</div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{$total_recette_musculation}} FCFA</div>
-                                    <div class="mt-2 mb-0 text-muted text-xs">
-                                        <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> </span>
-                                        <span>Recette Salle Musculation</span>
-                                    </div>
-                                </div>
-                                <div class="col-auto">
-                                <i class="fa-solid fa-dumbbell text-primary fs-3"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+               
 
                 <div class="col-xl-3 col-md-6 mb-4">
                     <div class="card h-100 px-3">
@@ -85,7 +67,7 @@
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
                                     <div class="text-xs font-weight-bold text-uppercase mb-1">Recette Médicament</div>
-                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"> {{$total_recette_medicament}} FCFA</div>
+                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"> {{number_format($total_recette_medicament)}} FCFA</div>
                                     <div class="mt-2 mb-0 text-muted text-xs">
                                         <span class="text-success mr-2"><i class="fas fa-arrow-up"></i></span>
                                         <span>Recette Médicament</span>
@@ -99,25 +81,7 @@
                     </div>
                 </div>
 
-                <div class="col-xl-3 col-md-6 mb-4">
-                    <div class="card h-100 px-3">
-                        <div class="card-body">
-                            <div class="row no-gutters align-items-center">
-                                <div class="col mr-2">
-                                    <div class="text-xs font-weight-bold text-uppercase mb-1">Total tickets Restaurations</div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{$total_restauration}} FCFA</div>
-                                    <div class="mt-2 mb-0 text-muted text-xs">
-                                        <span class="text-danger mr-2"><i class="fas fa-arrow-down"></i> </span>
-                                        <span>Total tickets Restaurations</span>
-                                    </div>
-                                </div>
-                                <div class="col-auto">
-                                <i class="fa-solid fa-utensils text-primary fs-3"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+           
 
 
                 <div class="col-xl-3 col-md-6 mb-4">
@@ -126,7 +90,7 @@
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
                                     <div class="text-xs font-weight-bold text-uppercase mb-1">Total recettes Pains</div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{$total_recette_Pain}} FCFA</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{number_format($total_recette_Pain)}} FCFA</div>
                                     <div class="mt-2 mb-0 text-muted text-xs">
                                         <span class="text-danger mr-2"><i class="fas fa-arrow-down"></i> </span>
                                         <span>Total recettes Pain</span>
@@ -147,7 +111,7 @@
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
                                     <div class="text-xs font-weight-bold text-uppercase mb-1">Total des Recettes</div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{$recette_total}} FCFA</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{number_format($recette_total)}} FCFA</div>
                                     <div class="mt-2 mb-0 text-muted text-xs">
                                         <span class="text-danger mr-2"><i class="fas fa-arrow-down"></i> </span>
                                         <span>Total des Recettes</span>
@@ -210,11 +174,9 @@
         data.addColumn('string', 'Topping');
         data.addColumn('number', 'Slices');
         data.addRows([
-            ['Ticket Consultation', jsonData[0]],
-            ['Ticket Musculatioon', jsonData[1]],
-            ['Vente de Médicament', jsonData[2]],
-            ['Vente Ticket de Restauration', jsonData[3]],
-            ['Vente Ticket de Pains', jsonData[4]],
+            ['Recettes des ventes de tickets', jsonData[0]],
+            ['Vente de Médicament', jsonData[1]],
+            ['Vente Ticket de Pains', jsonData[2]],
 
         ]);
 

@@ -10,32 +10,31 @@
             </button>
         </div>
         <div class="card-body">
-        <form action="{{route('musculation.update', $musculation->id)}}" class="p-3" method="post">
+        <form action="{{route('typetickets.update', $typeticket->id)}}" class="p-3" method="post">
                  @csrf
                  @method('PUT')
                 
                  <div class="row mb-3">
                     <div class="col-12 col-md-6">
-                        <label for="">Quantité</label>
-                        <input type="number" name="quantite" class="form-control" placeholder="quantite" value="{{$musculation->quantite}}">
+                        <label for="">Nom Ticket</label>
+                        <input type="text" name="nomticket" class="form-control" placeholder="quantite" value="{{$typeticket->nomticket}}">
                     </div>
 
                     <div class="col-12 col-md-6">
-                        <label for="">Nom Agent</label>
-                        <input type="text" name="nomAgent" class="form-control" placeholder="Nom Agent" value="{{$musculation->nomAgent}}">
+                        <label for="">valeur</label>
+                        <input type="number" name="valeur" class="form-control" placeholder="Valeur" value="{{$typeticket->valeur}}">
                     </div>
 
                 </div>
                 <div class="row mb-3">
                     <div class="col-12 col-md-6">
-                        <label for="">Date de versement</label>
-                        <input type="date" name="date" class="form-control" placeholder="Date" value="{{$musculation->date}}">
+                        <label for="">Description</label>
+                        <input type="text" name="description" class="form-control" placeholder="Description" value="{{$typeticket->description}}">
                     </div>
                     <div>
 
                     </div>
                 </div>
-                
 
 
                 <div class="row mb-3">
@@ -49,14 +48,3 @@
 </div>
 
 
-<!-- <div class="mx-auto container p-3">
-    <div class="card">
-        <div class="card-header d-flex align-content-center justify-content-between">
-            <h1 class="h2">Nouvelle recette</h1>
-            <button class="float-end btn btn-danger">
-                <i class="bi bi-arrow-90deg-left"></i>
-                Retour
-            </button>
-        </div>
-        
-       

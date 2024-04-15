@@ -22,31 +22,23 @@
                     </div>
 
                     <div class="col-12 col-md-6">
-                        <label for="">Quantité</label>
-                        <input type="number" name="quantite" class="form-control" placeholder="quantite"  value="{{$medicament->quantite}}">
+                        <label for="">Montant</label>
+                        <input type="number" name="montant" class="form-control" placeholder="montant"  value="{{$medicament->montant}}">
                     </div>
                 </div>
                 <div class="row mb-3">
-                    <div class="col-12 col-md-6">
-                        <label for="">Prix Unitaire</label>
-                        <input type="text" name="pu" class="form-control" placeholder="quantite"  value="{{$medicament->pu}}">
-                    </div>
 
                     <div class="col-12 col-md-6">
-                        <label for="">Nom Agent</label>
-                        <input type="text" name="nomAgent" class="form-control" placeholder="quantite"  value="{{$medicament->nomAgent}}">
+                        <label for="">Partie Versante</label>
+                        <input type="text" name="nomAgent" class="form-control" placeholder="Partie versante"  value="{{$medicament->nomAgent}}">
                     </div>
-
-                </div>
-                <div class="row mb-3">
-
 
                     <div class="col-12 col-md-6">
                         <label for="">Date de versement</label>
                         <input type="date" name="date" class="form-control" placeholder="Date"  value="{{$medicament->date}}">
                     </div>
-
                 </div>
+               
 
 
                 <div class="row mb-3">

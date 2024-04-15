@@ -8,6 +8,7 @@ use App\Models\Musculation;
 use App\Models\OrdreRecette;
 use App\Models\Pain;
 use App\Models\Petitdej;
+use App\Models\recetteticket;
 use App\Models\Ticketdej;
 use Illuminate\Http\Request;
 use PhpParser\Node\Stmt\Return_;
@@ -28,19 +29,20 @@ class OrdreRecetteController extends Controller
         }
         
 
-        $total_recette_consultation = $this->totalConsultation($date);
-        $total_recette_musculation = $this->totalMusculation($date);
+       
         $total_recette_medicament = $this->totalMedicament($date);
-        $total_recette_petitdejj = $this->total_petit_dej($date);
-        $total_recette_ticketdej = $this->total_dej($date);
+       
         $total_recette_Pain = $this->total_Pain($date);
+        $total_recette_tickets = $this->recetteticket($date);
+        
+       
+      
 
-        $total_restauration = $this->total_petit_dej($date) + $this->total_dej($date);
 
-
-        $recette_total = $this->totalConsultation($date) + $this->totalMusculation($date) + $this->totalMedicament($date) + $this->total_petit_dej($date) + $this->total_dej($date) +$this->total_Pain($date);
-        $res = [$total_recette_consultation, $total_recette_musculation, $total_recette_medicament, $total_restauration, $total_recette_Pain];
-        return view('ventes.home', compact('total_recette_consultation', 'total_recette_musculation', 'total_recette_medicament', 'total_restauration','total_recette_Pain', 'recette_total', 'res'));
+        $recette_total =  $this->totalMedicament($date) + $this->total_Pain($date) + $this->recetteticket($date);
+        
+        $res = [ $total_recette_tickets, $total_recette_medicament, $total_recette_Pain];
+        return view('ventes.home', compact('total_recette_medicament', 'total_recette_tickets','total_recette_Pain', 'recette_total', 'res'));
     }
 
 
@@ -125,5 +127,17 @@ class OrdreRecetteController extends Controller
             $total_recette_Pain += $recette_Pain->montant;
         }
         return $total_recette_Pain;
+    }
+
+    private function recetteticket($date)
+    {
+        $recette_tickets = recetteticket::whereYear('date', $date)->get();
+
+
+        $total_recette_tickets = 0;
+        foreach ($recette_tickets  as $recette_ticket) {
+            $total_recette_tickets += $recette_ticket->montant;
+        }
+        return $total_recette_tickets;
     }
 }

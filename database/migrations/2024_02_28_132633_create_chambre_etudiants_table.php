@@ -16,7 +16,8 @@ return new class extends Migration
 
             $table->string('objetrecette');
             $table->string('mois');
-            $table->integer('montant');
+            $table->bigInteger('montant');
+            $table->string('nomAgent');
             $table->date('datepaiement');
             $table->timestamps();
         });

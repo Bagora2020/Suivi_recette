@@ -6,7 +6,7 @@
 <div class="mx-auto container p-3">
     <div class="card">
         <div class="card-header d-flex align-content-center justify-content-between">
-            <h1 class="h2">Enregistrement Recette Consultation</h1>
+            <h1 class="h2">Enregistrement des types de tickets</h1>
             <a href="{{route('dashboardgeneral')}}"" class=" float-end btn btn-danger">
                 <i class="bi bi-arrow-90deg-left"></i>
                 Retour
@@ -24,25 +24,25 @@
 
 
         <div class="card-body">
-            <form action="{{route('consultation.add')}}" class="p-3" method="post">
+            <form action="{{route('typetickets.add')}}" class="p-3" method="post">
                 @csrf
 
                 <div class="row mb-3">
                     <div class="col-12 col-md-6">
-                        <label for="">Quantité</label>
-                        <input type="number" name="quantite" class="form-control" placeholder="quantite">
+                        <label for="">Nom Ticket</label>
+                        <input type="text" name="nomticket" class="form-control" placeholder="quantite">
                     </div>
 
                     <div class="col-12 col-md-6">
-                        <label for="">Nom Agent</label>
-                        <input type="text" name="nomAgent" class="form-control" placeholder="quantite">
+                        <label for="">valeur</label>
+                        <input type="number" name="valeur" class="form-control" placeholder="Valeur">
                     </div>
 
                 </div>
                 <div class="row mb-3">
                     <div class="col-12 col-md-6">
-                        <label for="">Date de versement</label>
-                        <input type="date" name="date" class="form-control" placeholder="Date">
+                        <label for="">Description</label>
+                        <input type="text" name="description" class="form-control" placeholder="Description">
                     </div>
                     <div>
 

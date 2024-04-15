@@ -47,6 +47,12 @@
                         <label for="">Date Paiement</label>
                         <input type="Date" name="datepaiement" class="form-control" placeholder="Date">
                     </div>
+
+                    <div class="col-12 col-md-6">
+                        <label for="">Nom Agent</label>
+                        <input type="text" name="nomAgent" class="form-control" placeholder="quantite">
+                    </div>
+
                 </div>
                
                 <div class="row mb-3">

@@ -155,27 +155,37 @@
           }
 
           .signatures {
-               display: flex;
-               flex-direction: row;
-               justify-content: space-between;
-               margin-top: 5%;
-               margin-bottom: 5%;
-               width: 100%;
-          }
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            margin-top: 5%;
+            margin-bottom: 5%;
+            width: 100%;
+        }
 
-          .ordonnateur {
-               font-weight: bolder;
-               font-size: 20px;
-               text-decoration: underline;
-               float: left;
-          }
+        .ordonnateur {
+            font-weight: bolder;
+            font-size: 20px;
+            text-decoration: underline;
+            float: left;
+            margin: 3.5%;
 
-          .directeur {
-               font-weight: bolder;
-               font-size: 20px;
-               text-decoration: underline;
-               float: right;
-          }
+        }
+
+        .recouvrement {
+            font-weight: bolder;
+            font-size: 20px;
+            text-decoration: underline;
+            margin: 3.5%;    
+        }
+        .caissier {
+            font-weight: bolder;
+            font-size: 20px;
+            text-decoration: underline;
+            float: right;
+            margin: 1.5%;
+            
+        }
 
           .text-sub-tab {
                font-size: 20px;
@@ -219,7 +229,7 @@
                     SERVICE DU SUIVI DES RECETTES</h5>
                <h3>
                     Enregistré sous le compte</h3>
-               <h3>707315</h3>
+               <h3>707314</h3>
           </div>
           <div class="right-side">
                <span class="card card-green">
@@ -232,9 +242,9 @@
      </header>
   
      <div class="contain">
-          <h1>ORDRE DE RECETTES N°00{{$invoice->id}} </h1>
+          <h1>ORDRE DE RECETTES N° </h1>
           <p class="text-ordre-recette">
-               Le chef du Service de recouvrement du CROUS/Z est invité à recevoir de <br>.............................................. la somme de .............................................. <br>
+               Le chef du Service de recouvrement du CROUS/Z est invité à recevoir de <br><b>{{$invoice->nomAgent}}</b> la somme de <b>{{ $total_lettre }}</b> FCFA<br>
                ({{$invoice->montant}} )
           </p>
           
@@ -250,8 +260,7 @@
               
                     <tr>
                          <td class="motif">
-                              <span>En espèce le {{$invoice->date}}  </span> <br>
-                              <p>Paiement Location Cantines</p>
+                              <p><b>Location Cantines<b></p>
                          </td>
                          <td class="td-montant border-visible">
                          {{$invoice->montant}} 
@@ -268,15 +277,20 @@
               
           </table>
           <div class="signatures">
-               <div class="ordonnateur">
-                    Sous-ordonnateur:
-               </div>
-               <div class="directeur">
-                    DIRECTEUR :
-               </div>
-          </div>
+            <div class="ordonnateur">
+                Chef de service de suivi des recettes:
+            </div>
+           
+            <div class="caissier">
+                pour le Comptable <br> Le Caissier :
+            </div>
+
+            <div class="recouvrement">
+               Chef de service recouvrement :
+            </div>
+        </div>
           <div class="text-sub-tab">
-               Cette somme sera portée dans les écritures du Chef du Service du Budget au compte 707315 : Location Cantines
+               Cette somme sera portée dans les écritures du Chef du Service du Budget au compte 707314 : Location Cantines
           </div>
      </div>
      <footer class="footer">
