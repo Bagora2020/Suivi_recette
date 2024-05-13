@@ -70,10 +70,7 @@
           <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
           Credit
         </a>
-        <a class="dropdown-item" href="{{route('login')}}">
-          <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-          Se connecter
-        </a>
+        
         <div class="dropdown-divider"></div>
        
         <div class="dropdown-divider"></div>

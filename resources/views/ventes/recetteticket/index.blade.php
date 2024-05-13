@@ -16,10 +16,10 @@
                 Nouvel ordre de recette
                 <i class="bi bi-folder-plus"></i>
             </a>
-
+           
             @foreach($recettepartype as $type => $recettes)
             <h4 class="text-center">{{ $type }}</h4>
-            <table id="#" class="table table-hover mt-3">
+            <table id="" class="table table-hover mt-3">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
@@ -68,8 +68,9 @@
                     </tr>
                 </tbody>
             </table>
+           
             @endforeach
-
+            
           
             <p class="text-center">
                 <strong>Somme Totale des recettes ventes de tickets:</strong>

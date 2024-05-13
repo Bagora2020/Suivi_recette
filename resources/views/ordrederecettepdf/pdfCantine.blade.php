@@ -98,15 +98,15 @@
           h1 {
                font-size: 30px;
                font-weight: bolder;
-               margin-top: 15%;
-               margin-bottom: 5%;
+               margin-top: 10%;
+               margin-bottom: 2%;
                text-align: center;
           }
 
           .text-ordre-recette {
                font-size: 20px;
-               margin-top: 5%;
-               margin-bottom: 5%;
+               margin-top: 1%;
+               margin-bottom: 1%;
                text-align: justify;
                line-height: 1.5;
                letter-spacing: 2px;
@@ -168,7 +168,7 @@
             font-size: 20px;
             text-decoration: underline;
             float: left;
-            margin: 3.5%;
+            margin: 1%;
 
         }
 
@@ -176,19 +176,34 @@
             font-weight: bolder;
             font-size: 20px;
             text-decoration: underline;
-            margin: 3.5%;    
+            margin: 1%; 
+            margin-bottom: 15%;   
         }
         .caissier {
             font-weight: bolder;
             font-size: 20px;
             text-decoration: underline;
             float: right;
-            margin: 1.5%;
+            margin: 0,5%;
+            margin-bottom: 20px;
             
         }
 
+        .directeur {
+            font-weight: bolder;
+            font-size: 20px;
+            text-decoration: underline;
+            margin-top: 24%;
+            margin-bottom: -7%;
+            line-height: 1;
+            text-align: center;
+            
+
+        }
+
+
           .text-sub-tab {
-               font-size: 20px;
+               font-size: 19px;
                margin-top: 30%;
                margin-bottom: 5%;
                text-align: justify;
@@ -244,7 +259,7 @@
      <div class="contain">
           <h1>ORDRE DE RECETTES N° </h1>
           <p class="text-ordre-recette">
-               Le chef du Service de recouvrement du CROUS/Z est invité à recevoir de <br><b>{{$invoice->nomAgent}}</b> la somme de <b>{{ $total_lettre }}</b> FCFA<br>
+               Le chef du Service de recouvrement du CROUS/Z est invité à recevoir de <b>{{$invoice->nomAgent}}</b> la somme de <b>{{ $words }}</b> FCFA
                ({{$invoice->montant}} )
           </p>
           
@@ -288,7 +303,13 @@
             <div class="recouvrement">
                Chef de service recouvrement :
             </div>
-        </div>
+           
+            <div class="directeur" >
+               Le Directeur :
+            </div>
+          </div>
+      
+      
           <div class="text-sub-tab">
                Cette somme sera portée dans les écritures du Chef du Service du Budget au compte 707314 : Location Cantines
           </div>

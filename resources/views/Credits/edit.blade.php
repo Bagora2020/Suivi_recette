@@ -29,7 +29,7 @@
                         <label for="">Prevision</label>
                         <input type="number" name="prevision" class="form-control" placeholder="PREVISION" value="{{$credits->prevision}}">
                     </div>               
-              <div>
+                 <div>
 
                 <div class="row mb-3">
                   

@@ -16,106 +16,84 @@ class PdfCantineController extends Controller
     {
         
         $invoice= Cantines::find($id);
-        $total_lettre = $this->numberToWord($invoice->montant);
+        $words = $this->numberToWord($invoice->montant);
 
-        $pdf = Pdf::loadView('ordrederecettepdf.pdfCantine', compact('invoice','total_lettre'));
+        $pdf = Pdf::loadView('ordrederecettepdf.pdfCantine', compact('invoice','words'));
 
         return $pdf->stream();
     }
 
 
-    
-    private function numberToWord($number)
-    {
-        $units = array('Zéro', 'Un', 'Deux', 'Trois', 'Quatre', 'Cinq', 'Six', 'Sept', 'Huit', 'Neuf');
-        $teens = array('Dix', 'Onze', 'Douze', 'Treize', 'Quatorze', 'Quinze', 'Seize', 'Dix-Sept', 'Dix-Huit', 'Dix-Neuf');
-        $tens = array('', '', 'Vingt', 'Trente', 'Quarante', 'Cinquante', 'Soixante', 'Soixante-Dix', 'Quatre-Vingt', 'Quatre-Vingt-Dix');
-    
-        if ($number < 10) {
-            return $units[$number];
-        } elseif ($number < 20) {
-            return $teens[$number - 10];
-        } elseif ($number < 100) {
-            $tens_digit = (int) ($number / 10);
-            $units_digit = $number % 10;
-            $total_lettre = $tens[$tens_digit];
-            if ($units_digit > 0) {
-                $total_lettre .= '-' . $units[$units_digit];
-            }
-            return $total_lettre;
-        } elseif ($number < 1000) {
-            $hundreds_digit = (int) ($number / 100);
-            $remainder = $number % 100;
-            $total_lettre = $units[$hundreds_digit] . ' Cent';
-            if ($remainder > 0) {
-                $total_lettre .= ' ' . $this->numberToWord($remainder);
-            }
-            return $total_lettre;
-        } elseif ($number < 10000) {
-            $thousands_digit = (int) ($number / 1000);
-            $remainder = $number % 1000;
-            $total_lettre = $this->numberToWord($thousands_digit);
-            if ($thousands_digit == 1) {
-                $total_lettre .= ' Mille';
+    private function numberToWord($num)
+{
+    $num    = (string) ((int) $num);
+
+    if ((int) ($num) && ctype_digit($num)) {
+        $words  = array();
+
+        $num    = str_replace(array(',', ' '), '', trim($num));
+
+        $list1  = array(
+            '','un', 'deux', 'trois', 'quatre',
+             'cinq', 'six', 'sept', 'huit', 'neuf', 'dix',
+              'onze', 'douze', 'treize', 'quatorze', 'quinze',
+               'seize', 'dix-sept', 'dix-huit', 'dix-neuf'
+        );
+
+        $list2  = array(
+            '', 'dix', 'vingt', 'trente', 'quarante',
+             'cinquante', 'soixante', 'soixante-dix', 
+             'quatre-vingts', 'quatre-vingt-dix', 'cent'
+        );
+
+        $list3  = array(
+            '', 'mille', 'million', 'milliard', 'billion',
+             'quadrillion', 'quintillion', 'sextillion', 'septillion', 
+             'octillion', 'nonillion', 'décillion', 'undécillion', 'duodécillion',
+              'trédécillion', 'quattuordécillion', 'quindécillion', 'sexdécillion', 
+              'septendécillion', 'octodécillion', 'novemdécillion', 'vigintillion'
+        );
+
+        $num_length = strlen($num);
+        $levels = (int) (($num_length + 2) / 3);
+        $max_length = $levels * 3;
+        $num    = substr('00' . $num, -$max_length);
+        $num_levels = str_split($num, 3);
+
+        foreach ($num_levels as $num_part) {
+            $levels--;
+            $hundreds   = (int) ($num_part / 100);
+            $hundreds   = ($hundreds ? ' ' . $list1[$hundreds] . ' cent' . ($hundreds == 1 ? '' : '') . ' ' : '');
+            $tens       = (int) ($num_part % 100);
+            $singles    = '';
+
+            if ($tens < 20) {
+                $tens = ($tens ? ' ' . $list1[$tens] . ' ' : '');
             } else {
-                $total_lettre .= ' Mille';
+                $tens = (int) ($tens / 10);
+                $tens = ' ' . $list2[$tens] . ' ';
+                $singles = (int) ($num_part % 10);
+                $singles = ' ' . $list1[$singles] . ' ';
             }
-            if ($remainder > 0) {
-                if ($remainder >= 100) {
-                    $total_lettre .= ' ' . $this->numberToWord($remainder);
-                } else {
-                    $total_lettre .= '-Cent';
-                }
-            }
-            return $total_lettre;
-        } elseif ($number < 100000) {
-            $ten_thousands_digit = (int) ($number / 10000);
-            $remainder = $number % 10000;
-    
-            if ($remainder > 0) {
-                $total_lettre = $tens[$ten_thousands_digit];
-                if ($remainder >= 1000) {
-                    $total_lettre .= ' ' . $this->numberToWord($remainder);
-                } else {
-                    $total_lettre .= '-Mille';
-                }
-            } else {
-                $total_lettre = $tens[$ten_thousands_digit] . ' Mille';
-            }
-    
-            return $total_lettre;
-        } elseif ($number < 1000000) {
-            $hundred_thousands_digit = (int) ($number / 100000);
-            $remainder = $number % 100000;
-            $total_lettre = $this->numberToWord($hundred_thousands_digit) . ' Cent';
-            if ($remainder > 0) {
-                $total_lettre .= ' ' . $this->numberToWord($remainder);
-            }
-            return $total_lettre;
-        }elseif ($number < 10000000) {
-            $millions_digit = (int) ($number / 1000000);
-            $remainder = $number % 1000000;
-            if ($millions_digit > 1) {
-                $total_lettre = $this->numberToWord($millions_digit) . ' Millions';
-            } elseif ($millions_digit == 1) {
-                $total_lettre = 'Un Million';
-            } else {
-                $total_lettre = '';
-            }
-            if ($remainder > 0) {
-                if ($remainder >= 1000) {
-                    $thousands_digit = (int) ($remainder / 1000);
-                    $remainder %= 1000;
-                    $total_lettre .= ($millions_digit > 0 ? ' ' : '') . $this->numberToWord($thousands_digit) . ' Mille';
-                    if ($remainder > 0) {
-                        $total_lettre .= ' ' . $this->numberToWord($remainder);
-                    }
-                } else {
-                    $total_lettre .= ($millions_digit > 0 ? ' ' : '') . $this->numberToWord($remainder);
-                }
-            }
-            return $total_lettre;
+            $words[] = $hundreds . $tens . $singles . (($levels && (int) ($num_part)) ? ' ' . $list3[$levels] . ' ' : '');
         }
-        
-    }        
+        $commas = count($words);
+        if ($commas > 1) {
+            $commas = $commas - 1;
+        }
+
+        $words  = implode(', ', $words);
+
+        $words  = trim(str_replace(' ,', ',', ucwords($words)), ', ');
+        if ($commas) {
+            $words  = str_replace(',', '', $words);
+        }
+
+        return $words;
+    } else if (!((int) $num)) {
+        return 'Zero';
+    }
+    return '';
+}
+
 }

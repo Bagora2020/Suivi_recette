@@ -8,153 +8,153 @@
     <link rel="stylesheet" href="style.css">
 
     <style>
-        body {
-            font-family: 'Nunito', sans-serif;
-            color: #333;
-            background-color: #fff;
-            margin: 0;
-            padding: 0 3%;
-        }
+       body {
+               font-family: 'Nunito', sans-serif;
+               color: #333;
+               background-color: #fff;
+               margin: 0;
+               padding: 0 3%;
+          }
 
-        .header {
-            display: flex !important;
-            justify-content: space-between;
-            font-size: 12px;
-            line-height: 1;
-            width: 100%;
-        }
+          .header {
+               display: flex !important;
+               justify-content: space-between;
+               font-size: 12px;
+               line-height: 1;
+               width: 100%;
+          }
 
-        img {
-            width: 100px;
-            height: 50px;
-            margin: 0 auto;
-        }
+          img {
+               width: 100px;
+               height: 50px;
+               margin: 0 auto;
+          }
 
-        .img-flag {
-            margin-top: 3%;
-            height: 30px;
-        }
+          .img-flag {
+               margin-top: 3%;
+               height: 30px;
+          }
 
-        .left-side {
-            flex-direction: column;
-            justify-content: center;
-            text-align: center;
-            width: 50%;
-            float: left;
-            margin-left: -5%;
-        }
+          .left-side {
+               flex-direction: column;
+               justify-content: center;
+               text-align: center;
+               width: 50%;
+               float: left;
+               margin-left: -5%;
+          }
 
-        .right-side {
-            flex-direction: column;
-            justify-content: flex-end;
-            text-align: right;
-            width: 40%;
-            float: right;
-        }
+          .right-side {
+               flex-direction: column;
+               justify-content: flex-end;
+               text-align: right;
+               width: 40%;
+               float: right;
+          }
 
-        .hr-header {
-            width: 15%;
-            margin-top: -1%;
-            margin-bottom: -1%;
-        }
+          .hr-header {
+               width: 15%;
+               margin-top: -1%;
+               margin-bottom: -1%;
+          }
 
-        h3 {
-            margin-top: -2%;
-        }
+          h3 {
+               margin-top: -2%;
+          }
 
-        .card-green {
-            margin-top: 3%;
-            padding: 15px 40px;
-            color: #fff;
-            font-weight: bolder;
-            border-radius: 5px;
-            height: 40px;
-            display: flex;
-            align-content: center;
-            justify-content: center;
-            text-align: center;
-            background-color: #064b25;
-            width: 170px;
-            float: right;
+          .card-green {
+               margin-top: 3%;
+               padding: 15px 40px;
+               color: #fff;
+               font-weight: bolder;
+               border-radius: 5px;
+               height: 40px;
+               display: flex;
+               align-content: center;
+               justify-content: center;
+               text-align: center;
+               background-color: #064b25;
+               width: 170px;
+               float: right;
 
-        }
+          }
 
-        .card-outline-warning {
-            margin-top: 200px;
-            padding: 15px 40px;
-            color: #111;
-            font-weight: bolder;
-            border-radius: 5px;
-            height: 40px;
-            display: flex;
-            align-content: center;
-            align-items: center;
-            text-align: center;
-            border: 2px solid #f0ad4e;
-            width: 170px;
-            float: right;
-        }
+          .card-outline-warning {
+               margin-top: 200px;
+               padding: 15px 40px;
+               color: #111;
+               font-weight: bolder;
+               border-radius: 5px;
+               height: 40px;
+               display: flex;
+               align-content: center;
+               align-items: center;
+               text-align: center;
+               border: 2px solid #f0ad4e;
+               width: 170px;
+               float: right;
+          }
 
-        h1 {
-            font-size: 30px;
-            font-weight: bolder;
-            margin-top: 15%;
-            margin-bottom: 5%;
-            text-align: center;
-        }
+          h1 {
+               font-size: 30px;
+               font-weight: bolder;
+               margin-top: 10%;
+               margin-bottom: 2%;
+               text-align: center;
+          }
 
-        .text-ordre-recette {
-            font-size: 20px;
-            margin-top: 5%;
-            margin-bottom: 5%;
-            text-align: justify;
-            line-height: 1.5;
-            letter-spacing: 2px;
-        }
+          .text-ordre-recette {
+               font-size: 20px;
+               margin-top: 1%;
+               margin-bottom: 1%;
+               text-align: justify;
+               line-height: 1.5;
+               letter-spacing: 2px;
+          }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 5%;
-            margin-bottom: 5%;
-        }
+          table {
+               width: 100%;
+               border-collapse: collapse;
+               margin-top: 5%;
+               margin-bottom: 5%;
+          }
 
-        .border-visible {
-            border: 1px solid #333;
-            padding: 10px;
-            text-align: center;
-        }
+          .border-visible {
+               border: 1px solid #333;
+               padding: 10px;
+               text-align: center;
+          }
 
-        .td-montant {
-            font-weight: bolder;
-            font-size: 20px;
-            width: 40%;
-        }
+          .td-montant {
+               font-weight: bolder;
+               font-size: 20px;
+               width: 40%;
+          }
 
-        tbody tr td {
-            height: 150px;
-            padding-left: 5%;
-        }
+          tbody tr td {
+               height: 150px;
+               padding-left: 5%;
+          }
 
-        span {
-            font-weight: bolder;
-            font-size: 20px;
-        }
+          span {
+               font-weight: bolder;
+               font-size: 20px;
+          }
 
-        .motif {
-            border: none;
-        }
+          .motif {
+               border: none;
+          }
 
-        tfoot tr td {
-            font-weight: bolder;
-            font-size: 20px;
-            text-align: center;
-            border: 1px solid #333;
-            padding: 15px;
+          tfoot tr td {
+               font-weight: bolder;
+               font-size: 20px;
+               text-align: center;
+               border: 1px solid #333;
+               padding: 15px;
 
-        }
+          }
 
-        .signatures {
+          .signatures {
             display: flex;
             flex-direction: row;
             justify-content: space-between;
@@ -168,35 +168,59 @@
             font-size: 20px;
             text-decoration: underline;
             float: left;
+            margin: 1%;
+
+        }
+
+        .recouvrement {
+            font-weight: bolder;
+            font-size: 20px;
+            text-decoration: underline;
+            margin: 1%; 
+            margin-bottom: 15%;   
+        }
+        .caissier {
+            font-weight: bolder;
+            font-size: 20px;
+            text-decoration: underline;
+            float: right;
+            margin: 0,5%;
+            margin-bottom: 20px;
+            
         }
 
         .directeur {
             font-weight: bolder;
             font-size: 20px;
             text-decoration: underline;
-            float: right;
-        }
-
-        .text-sub-tab {
-            font-size: 20px;
-            margin-top: 30%;
-            margin-bottom: 5%;
-            text-align: justify;
-            line-height: 1.5;
-        }
-
-        footer {
-            border-top: 1px solid #333;
-            border-width: 90%;
-            padding: 15px;
+            margin-top: 24%;
+            margin-bottom: -7%;
+            line-height: 1;
             text-align: center;
-            position: absolute;
-            bottom: 0;
+            
+
         }
 
-        .contain {
-            margin-top: 28%;
-        }
+
+          .text-sub-tab {
+               font-size: 19px;
+               margin-top: 30%;
+               margin-bottom: 5%;
+               text-align: justify;
+               line-height: 1.5;
+          }
+
+          footer {
+               border-top: 1px solid #333;
+               border-width: 90%;
+               padding: 15px;
+               text-align: center;
+               position: absolute;
+               bottom: 0;
+          }
+          .contain{
+               margin-top: 28%;
+          }
     </style>
 </head>
 
@@ -270,12 +294,21 @@
         </table>
         <div class="signatures">
             <div class="ordonnateur">
-                Sous-ordonnateur:
+                Chef de service de suivi des recettes:
             </div>
-            <div class="directeur">
-                DIRECTEUR :
+           
+            <div class="caissier">
+                pour le Comptable <br> Le Caissier :
             </div>
-        </div>
+
+            <div class="recouvrement">
+               Chef de service recouvrement :
+            </div>
+           
+            <div class="directeur" >
+               Le Directeur :
+            </div>
+          </div>
         <div class="text-sub-tab">
             Cette somme sera portée dans les écritures du Chef du Service du Budget au compte 707315 : Vente de Tickets pour la salle musculation
         </div>

@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class RecetteticketController extends Controller
 {
     public function index(){
-        $recetteticket = recetteticket::paginate(12);
+        $recetteticket = recetteticket::paginate(28);
         
         $recettepartype=[];
 

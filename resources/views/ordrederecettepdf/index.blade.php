@@ -8,7 +8,7 @@
      <link rel="stylesheet" href="style.css">
 
      <style>
-          body {
+         body {
                font-family: 'Nunito', sans-serif;
                color: #333;
                background-color: #fff;
@@ -98,15 +98,15 @@
           h1 {
                font-size: 30px;
                font-weight: bolder;
-               margin-top: 15%;
-               margin-bottom: 5%;
+               margin-top: 10%;
+               margin-bottom: 2%;
                text-align: center;
           }
 
           .text-ordre-recette {
                font-size: 20px;
-               margin-top: 5%;
-               margin-bottom: 5%;
+               margin-top: 1%;
+               margin-bottom: 1%;
                text-align: justify;
                line-height: 1.5;
                letter-spacing: 2px;
@@ -155,30 +155,55 @@
           }
 
           .signatures {
-               display: flex;
-               flex-direction: row;
-               justify-content: space-between;
-               margin-top: 5%;
-               margin-bottom: 5%;
-               width: 100%;
-          }
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            margin-top: 5%;
+            margin-bottom: 5%;
+            width: 100%;
+        }
 
-          .ordonnateur {
-               font-weight: bolder;
-               font-size: 20px;
-               text-decoration: underline;
-               float: left;
-          }
+        .ordonnateur {
+            font-weight: bolder;
+            font-size: 20px;
+            text-decoration: underline;
+            float: left;
+            margin: 1%;
 
-          .directeur {
-               font-weight: bolder;
-               font-size: 20px;
-               text-decoration: underline;
-               float: right;
-          }
+        }
+
+        .recouvrement {
+            font-weight: bolder;
+            font-size: 20px;
+            text-decoration: underline;
+            margin: 1%; 
+            margin-bottom: 15%;   
+        }
+        .caissier {
+            font-weight: bolder;
+            font-size: 20px;
+            text-decoration: underline;
+            float: right;
+            margin: 0,5%;
+            margin-bottom: 20px;
+            
+        }
+
+        .directeur {
+            font-weight: bolder;
+            font-size: 20px;
+            text-decoration: underline;
+            margin-top: 24%;
+            margin-bottom: -7%;
+            line-height: 1;
+            text-align: center;
+            
+
+        }
+
 
           .text-sub-tab {
-               font-size: 20px;
+               font-size: 19px;
                margin-top: 30%;
                margin-bottom: 5%;
                text-align: justify;
@@ -268,12 +293,21 @@
               
           </table>
           <div class="signatures">
-               <div class="ordonnateur">
-                    Sous-ordonnateur:
-               </div>
-               <div class="directeur">
-                    DIRECTEUR :
-               </div>
+            <div class="ordonnateur">
+                Chef de service de suivi des recettes:
+            </div>
+           
+            <div class="caissier">
+                pour le Comptable <br> Le Caissier :
+            </div>
+
+            <div class="recouvrement">
+               Chef de service recouvrement :
+            </div>
+           
+            <div class="directeur" >
+               Le Directeur :
+            </div>
           </div>
           <div class="text-sub-tab">
                Cette somme sera portée dans les écritures du Chef du Service du Budget au compte 707315 : Ticket de {{$invoice->type}}

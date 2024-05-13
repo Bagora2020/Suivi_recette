@@ -128,15 +128,7 @@
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/3.0.0/js/buttons.print.min.js"></script>
 
 
-<script>
-    new DataTable('#example', {
-        layout: {
-            topStart: {
-                buttons: ['copy', 'csv', 'excel', 'pdf', 'print']
-            }
-        }
-    });
-</script>
+
 
 <script>
     $(document).ready(function() {
@@ -144,7 +136,7 @@
     });
 </script>
 
-<script>
+<!-- <script>
     new DataTable('#example1', {
         layout: {
             topStart: {
@@ -153,7 +145,7 @@
             }
         }
     });
-</script>
+</script> -->
 
 <script>
     $(document).ready(function() {
@@ -161,7 +153,7 @@
     });
 </script>
 
-<script>
+<!-- <script>
     new DataTable('#example2', {
         layout: {
             topStart: {
@@ -169,7 +161,7 @@
             }
         }
     });
-</script>
+</script> -->
 
 <script>
     $(document).ready(function() {
@@ -177,7 +169,7 @@
     });
 </script>
 
-<script>
+<!-- <script>
     new DataTable('#example3', {
         layout: {
             topStart: {
@@ -185,7 +177,7 @@
             }
         }
     });
-</script>
+</script> -->
 
 <script>
     $(document).ready(function() {

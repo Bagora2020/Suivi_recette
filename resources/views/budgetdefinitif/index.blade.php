@@ -38,10 +38,7 @@
                       
 
                         <td class="d-flex flex-row ">
-                            <a href="#" class="bg-warning badge "><i class="bi bi-pencil-fill"></i></a>
-
-                        
-
+                            <a href="{{route('budgetdefinitif.edit',  $BudgetDefinitifs->id )}}"" class="bg-warning badge "><i class="bi bi-pencil-fill"></i></a>
                             
                             <a href="{{route('Credits.index',  $BudgetDefinitifs->id )}}"  class="bg-info badge"><i class="bi bi-eye-fill"></i></a>
                         </td>

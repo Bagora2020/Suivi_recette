@@ -50,7 +50,7 @@
 
                     <div class="col-12 col-md-6">
                         <label for="">Nom Agent</label>
-                        <input type="text" name="nomAgent" class="form-control" placeholder="quantite">
+                        <input type="text" name="nomAgent" class="form-control" placeholder="Nom Agent">
                     </div>
                 </div>
 

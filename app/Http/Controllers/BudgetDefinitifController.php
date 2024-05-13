@@ -43,7 +43,9 @@ class BudgetDefinitifController extends Controller
     public function update(Request $request, $id)
     {
         $BudgetDefinitif = BudgetDefinitif::findOrFail($id);
+       
         $BudgetDefinitif->update($request->all());
+        
         return redirect()->route('budgetdefinitif.index')->with('success', 'Article updated successfully');
     }
 

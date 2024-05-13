@@ -30,7 +30,7 @@
                 <div class="row mb-3">
                     <div class="col-12 col-md-6">
                         <label for="">Nom Ticket</label>
-                        <input type="text" name="nomticket" class="form-control" placeholder="quantite">
+                        <input type="text" name="nomticket" class="form-control" placeholder="Nom du ticket">
                     </div>
 
                     <div class="col-12 col-md-6">
